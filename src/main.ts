@@ -1,12 +1,12 @@
 import "@/assets/css/index.scss"
-import router from "@/router/router"
+import { setupRouter } from "@/router/"
 import { setupEcharts } from "@/setup/echarts"
 import { setupElementPlus } from "@/setup/element-plus"
-import { setupStore } from "@/store/index.js"
+import { setupStore } from "@/store/"
 import mitt from "mitt"
 import "normalize.css"
 import { createApp } from "vue"
-import App from "./App.vue"
+import App from "./App"
 
 const app = createApp(App)
 // 装载Echarts
@@ -18,6 +18,7 @@ setupStore(app)
 // 全局注册自定义模块组件
 
 // 配置全局属性
-app.config.globalProperties.$mitt = new mitt()
+app.config.globalProperties.$mitt = mitt()
 
-app.use(router).mount("#app")
+setupRouter(app)
+app.mount("#app")

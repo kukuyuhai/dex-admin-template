@@ -1,19 +1,36 @@
 {
 	"compileOnSave": true,
 	"compilerOptions": {
-		"target": "ESNext",
-		"types": [
-			"vite/client"
-		],
-		"allowJs": true,
-		"module": "ES2015",
+		"baseUrl": ".",
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"strict": true,
+		"jsx": "preserve",
 		"sourceMap": true,
-		"noImplicitAny": true
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"lib": [
+			"esnext",
+			"dom"
+		],
+		"types": [
+			"vite/client",
+		],
+		"paths": {
+			"@/*": [
+				"src/*"
+			],
+		},
+		"checkJs": true,
+		"noImplicitAny": false
 	},
 	"include": [
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
 		"src/**/*.vue",
-		"src/**/*.jsx",
-		"src/**/*.ts"
+		"vite.config.ts"
 	],
 	"exclude": [
 		"node_modules",

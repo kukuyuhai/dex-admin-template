@@ -31,11 +31,14 @@ export default defineConfig({
     })
   ],
   resolve: {
+    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],
     alias: {
       "@": resolve(__dirname, "src/")
     }
   },
-  optimizeDeps: {},
+  optimizeDeps: {
+    exclude: ["vue-demi", "consolidate"]
+  },
   css: {
     preprocessorOptions: {
       // 配置scss，less等
@@ -47,11 +50,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html")
       }
     },
-    minify: {
-      removeComments: false,
-      collapseWhitespace: true,
-      removeAttributeQuotes: true
-    },
+    minify: "terser",
     terserOptions: {
       compress: {
         // warnings: false,
