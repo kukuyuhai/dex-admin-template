@@ -1,0 +1,22 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"target": "ESNext",
+		"types": [
+			"vite/client"
+		],
+		"allowJs": true,
+		"module": "ES2015",
+		"sourceMap": true,
+		"noImplicitAny": true
+	},
+	"include": [
+		"src/**/*.vue",
+		"src/**/*.jsx",
+		"src/**/*.ts"
+	],
+	"exclude": [
+		"node_modules",
+		"**/*.spec.ts"
+	]
+}

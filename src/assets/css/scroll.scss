@@ -1,0 +1,27 @@
+/**custom scrollbar **/
+body {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    margin: -1px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #40abb2;
+    min-height: 8px;
+    min-width: 8px;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:vertical:hover {
+    background: #555555;
+  }
+  
+  ::-webkit-scrollbar-thumb:horizontal:hover {
+    background: #555555;
+  }
+}
