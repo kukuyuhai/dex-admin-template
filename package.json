@@ -1,34 +1,44 @@
 {
-	"name": "chinadep-admin-template",
-	"version": "0.0.1",
-	"scripts": {
-		"docs": "npx docsify serve docs -p 3001 --open",
-		"dev": "vite --host",
-		"build": "vite build",
-		"serve": "vite preview"
-	},
-	"dependencies": {
-		"echarts": "^5.1.2",
-		"element-plus": "^1.0.2-beta.53",
-		"mitt": "^3.0.0",
-		"normalize.css": "^8.0.1",
-		"pinia": "^2.0.0-alpha.16",
-		"vue": "^3.0.11",
-		"vue-echarts": "^6.0.0-rc.6",
-		"vue-router": "^4.0.8"
-	},
-	"devDependencies": {
-		"@types/node": "^15.12.5",
-		"@vitejs/plugin-vue": "^1.2.4",
-		"@vitejs/plugin-vue-jsx": "^1.1.6",
-		"@vue/compiler-sfc": "^3.1.2",
-		"docsify-cli": "^4.4.3",
-		"rollup": "^2.52.6",
-		"sass": "^1.35.1",
-		"sass-loader": "^12.1.0",
-		"typescript": "^4.3.5",
-		"vite": "^2.3.8",
-		"vite-plugin-style-import": "^1.0.1"
-	},
-	"license": "MIT"
+  "name": "chinadep-admin-template",
+  "version": "0.0.1",
+  "scripts": {
+    "docs": "npx docsify serve docs -p 3001 --open",
+    "dev": "vite --host",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "echarts": "^5.1.2",
+    "element-plus": "^1.0.2-beta.53",
+    "mitt": "^3.0.0",
+    "normalize.css": "^8.0.1",
+    "pinia": "^2.0.0-alpha.16",
+    "vue": "^3.0.11",
+    "vue-echarts": "^6.0.0-rc.6",
+    "vue-router": "^4.0.8"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.5",
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vitejs/plugin-vue-jsx": "^1.1.6",
+    "@vue/compiler-sfc": "^3.1.2",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "docsify-cli": "^4.4.3",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-define-config": "^1.0.9",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-vue": "^7.12.1",
+    "prettier": "^2.3.2",
+    "rollup": "^2.52.6",
+    "sass": "^1.35.1",
+    "sass-loader": "^12.1.0",
+    "typescript": "^4.3.5",
+    "vite": "^2.3.8",
+    "vite-plugin-style-import": "^1.0.1",
+    "vue-eslint-parser": "^7.7.2",
+    "vue-tsc": "^0.2.0"
+  },
+  "license": "MIT"
 }

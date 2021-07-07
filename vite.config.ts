@@ -18,9 +18,7 @@ export default defineConfig({
           esModule: true,
           ensureStyleFile: true,
           resolveStyle: (name) => {
-            if (name !== "locale") {
-              name = name.slice(3)
-            }
+            name = name.slice(3)
             return `element-plus/packages/theme-chalk/src/${name}.scss`
           },
           resolveComponent: (name) => {
@@ -33,7 +31,7 @@ export default defineConfig({
   resolve: {
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],
     alias: {
-      "@": resolve(__dirname, "src/")
+      "@": resolve(__dirname, "src")
     }
   },
   optimizeDeps: {
