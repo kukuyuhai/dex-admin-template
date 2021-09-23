@@ -1,5 +1,4 @@
 import Index from "@/views/index.vue"
-import type { App } from "vue"
 import { createRouter, createWebHashHistory } from "vue-router"
 const router = createRouter({
   history: createWebHashHistory(),
@@ -14,7 +13,7 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 })
 })
 
-export function setupRouter(app: App<Element>) {
+export function setupRouter(app) {
   app.use(router)
 }
 

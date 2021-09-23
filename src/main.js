@@ -6,7 +6,7 @@ import { setupStore } from "@/store/"
 import mitt from "mitt"
 import "normalize.css"
 import { createApp } from "vue"
-import App from "./App"
+import App from "./App.vue"
 
 const app = createApp(App)
 // 装载Echarts
