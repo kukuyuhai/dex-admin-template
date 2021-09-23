@@ -6,7 +6,6 @@
 		"module": "esnext",
 		"moduleResolution": "node",
 		"strict": true,
-		"jsx": "preserve",
 		"sourceMap": true,
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
@@ -15,26 +14,17 @@
 			"esnext",
 			"dom"
 		],
-		"types": [
-			"vite/client",
-		],
 		"paths": {
 			"@/*": [
 				"src/*"
 			],
 		},
-		"checkJs": true,
-		"noImplicitAny": false
 	},
 	"include": [
-		"src/**/*.ts",
-		"src/**/*.d.ts",
-		"src/**/*.tsx",
 		"src/**/*.vue",
-		"vite.config.ts"
+		"vite.config.js"
 	],
 	"exclude": [
 		"node_modules",
-		"**/*.spec.ts"
 	]
 }
