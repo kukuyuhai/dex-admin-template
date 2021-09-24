@@ -7,6 +7,7 @@ import mitt from "mitt"
 import "normalize.css"
 import { createApp } from "vue"
 import App from "./App.vue"
+import { setupSvgIcon } from "./setup/svg-icon"
 
 const app = createApp(App)
 // 装载Echarts
@@ -16,6 +17,7 @@ setupElementPlus(app)
 // 注册store
 setupStore(app)
 // 全局注册自定义模块组件
+setupSvgIcon(app)
 
 // 配置全局属性
 app.config.globalProperties.$mitt = mitt()
