@@ -2,12 +2,14 @@ import "@/assets/css/index.scss"
 import { setupRouter } from "@/router/"
 import { setupEcharts } from "@/setup/echarts"
 import { setupElementPlus } from "@/setup/element-plus"
+import { setupSvgIcon } from "./setup/svg-icon"
 import { setupStore } from "@/store/"
 import mitt from "mitt"
 import "normalize.css"
 import { createApp } from "vue"
 import App from "./App.vue"
-import { setupSvgIcon } from "./setup/svg-icon"
+import "./styles/index.css"
+import "./permission" // 注册路由权限
 
 const app = createApp(App)
 // 装载Echarts

@@ -1,17 +1,17 @@
-import { onMounted } from "vue"
+import { onMounted, nextTick, onActivated } from "vue"
 export function onMountedOrActivated(hook) {
-	let monuted
+  let monuted
 
-	onMounted(() => {
-		hook()
-		nextTick(() => {
-			monuted = true
-		})
-	})
+  onMounted(() => {
+    hook()
+    nextTick(() => {
+      monuted = true
+    })
+  })
 
-	onActivated(() => {
-		if (monuted) {
-			hook()
-		}
-	})
+  onActivated(() => {
+    if (monuted) {
+      hook()
+    }
+  })
 }

@@ -2,7 +2,8 @@ const { defineConfig } = require("eslint-define-config")
 module.exports = defineConfig({
   root: true,
   env: {
-    node: true
+    node: true,
+    browser: true
   },
   parser: "vue-eslint-parser",
   parserOptions: {
@@ -13,6 +14,13 @@ module.exports = defineConfig({
       impliedStrict: false,
       jsx: true
     }
+  },
+  globals: {
+    defineProps: "readonly",
+    defineEmits: "readonly",
+    defineExpose: "readonly",
+    withDefaults: "readonly",
+    $ref: "readonly"
   },
   extends: ["plugin:vue/vue3-essential", "eslint:recommended", "plugin:prettier/recommended"],
   settings: {

@@ -6,4 +6,7 @@ dist-ssr
 yarn-error.log
 
 # vscode
-.vscode
+#.vscode
+
+#pnpm
+.pnpm-debug.log

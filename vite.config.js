@@ -5,11 +5,12 @@ import Components from "unplugin-vue-components/vite"
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import ElementPlus from "unplugin-element-plus/vite"
 import viteSvgIcons from "vite-plugin-svg-icons"
+import { viteMockServe } from "vite-plugin-mock"
 
 const { resolve } = require("path")
 
 // https://vitejs.dev/config/
-export default () =>
+export default ({ command }) =>
   defineConfig({
     plugins: [
       vue({
@@ -30,8 +31,14 @@ export default () =>
         // 配置路劲在你的src里的svg存放文件
         iconDirs: [resolve(process.cwd(), "src/icons")],
         symbolId: "icon-[dir]-[name]"
+      }),
+      viteMockServe({
+        // default
+        mockPath: "mock",
+        localEnabled: command === "dev:mock"
       })
     ],
+
     resolve: {
       extensions: [".mjs", ".js", ".json"],
       alias: {
