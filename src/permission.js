@@ -18,10 +18,11 @@ router.beforeEach(async (to, from, next) => {
   if (whiteList.includes(to.path)) {
     next()
   } else {
-    if (!hasToken) {
+    if (hasToken) {
       next()
+    } else {
+      next({ path: "/login" })
     }
-    next()
   }
 })
 

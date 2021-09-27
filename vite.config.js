@@ -12,6 +12,7 @@ const { resolve } = require("path")
 // https://vitejs.dev/config/
 export default ({ command }) =>
   defineConfig({
+    base: "/",
     plugins: [
       vue({
         refTransform: true
@@ -38,7 +39,6 @@ export default ({ command }) =>
         localEnabled: command === "dev:mock"
       })
     ],
-
     resolve: {
       extensions: [".mjs", ".js", ".json"],
       alias: {

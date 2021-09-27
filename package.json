@@ -1,5 +1,5 @@
 {
-	"name": "kustone-admin-template",
+	"name": "dex-admin-template",
 	"version": "0.0.1",
 	"scripts": {
 		"docs": "npx docsify serve docs -p 3001 --open",
@@ -7,13 +7,14 @@
 		"dev:mock": "vite --host",
 		"build:prod": "vite build",
 		"build:stage": "vite build --mode staging",
-		"lint": "eslint src --ext .vue,.js",
+		"lint": "eslint --ext .vue,.js src",
 		"serve": "vite preview",
 		"prepare": "husky install",
 		"commit": "git-cz",
 		"czlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
 	},
 	"dependencies": {
+		"@vueuse/core": "^6.5.3",
 		"echarts": "^5.2.1",
 		"element-plus": "^1.1.0-beta.15",
 		"js-cookie": "^3.0.1",

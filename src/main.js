@@ -1,5 +1,5 @@
 import "@/assets/css/index.scss"
-import { setupRouter } from "@/router/"
+import { setupRouterMountedApp } from "@/router/"
 import { setupEcharts } from "@/setup/echarts"
 import { setupElementPlus } from "@/setup/element-plus"
 import { setupSvgIcon } from "./setup/svg-icon"
@@ -21,8 +21,8 @@ setupStore(app)
 // 全局注册自定义模块组件
 setupSvgIcon(app)
 
+// 装在路由
+setupRouterMountedApp(app)
 // 配置全局属性
 app.config.globalProperties.$mitt = mitt()
-
-setupRouter(app)
-app.mount("#app")
+app.config.performance = true

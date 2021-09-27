@@ -4,5 +4,6 @@
 		"javascriptreact",
 		"vue"
 	],
-	"vetur.validation.template": false
+	"vetur.validation.template": false,
+	"vue3snippets.enable-compile-vue-file-on-did-save-code": false
 }

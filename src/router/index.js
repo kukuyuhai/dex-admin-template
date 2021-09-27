@@ -36,8 +36,12 @@ export const syncRoutes = []
  * 挂载路由方法
  * @param {*} app  app实例
  */
-export function setupRouter(app) {
+export function setupRouterMountedApp(app) {
   app.use(router)
+  // 路由加载完成后挂载app
+  router.isReady().then(() => {
+    app.mount("#app")
+  })
 }
 
 export default router

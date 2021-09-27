@@ -9,5 +9,5 @@ use([CanvasRenderer, PieChart, TooltipComponent, LegendComponent])
 
 export function setupEcharts(app) {
   // 全局注册组件（也可以使用局部注册）
-  app.component("v-chart", ECharts)
+  app.component("VChart", ECharts)
 }
