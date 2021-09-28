@@ -1,76 +1,76 @@
 {
-	"name": "dex-admin-template",
-	"version": "0.0.1",
-	"scripts": {
-		"docs": "npx docsify serve docs -p 3001 --open",
-		"dev": "vite --host",
-		"dev:mock": "vite --host",
-		"build:prod": "vite build",
-		"build:stage": "vite build --mode staging",
-		"lint": "eslint --ext .vue,.js src",
-		"serve": "vite preview",
-		"prepare": "husky install",
-		"commit": "git-cz",
-		"czlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
-	},
-	"dependencies": {
-		"@vueuse/core": "^6.5.3",
-		"echarts": "^5.2.1",
-		"element-plus": "^1.1.0-beta.15",
-		"js-cookie": "^3.0.1",
-		"mitt": "^3.0.0",
-		"normalize.css": "^8.0.1",
-		"nprogress": "^0.2.0",
-		"pinia": "^2.0.0-alpha.16",
-		"unplugin-vue-components": "^0.15.3",
-		"vue": "^3.0.11",
-		"vue-echarts": "^6.0.0",
-		"vue-router": "^4.0.8"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^13.1.0",
-		"@commitlint/config-conventional": "^13.1.0",
-		"@tailwindcss/postcss7-compat": "^2.2.14",
-		"@vitejs/plugin-vue": "^1.9.0",
-		"@vitejs/plugin-vue-jsx": "^1.1.8",
-		"@vue/compiler-sfc": "^3.2.14",
-		"autoprefixer": "^9",
-		"commitizen": "^4.2.4",
-		"conventional-changelog-cli": "^2.1.1",
-		"cz-conventional-changelog": "^3.3.0",
-		"docsify-cli": "^4.4.3",
-		"eslint": "^7.32.0",
-		"eslint-config-prettier": "^8.3.0",
-		"eslint-define-config": "^1.0.9",
-		"eslint-plugin-prettier": "^4.0.0",
-		"eslint-plugin-vue": "^7.18.0",
-		"husky": "^7.0.2",
-		"lint-staged": "^11.1.2",
-		"mockjs": "^1.1.0",
-		"postcss": "^7",
-		"prettier": "^2.4.1",
-		"rollup": "^2.57.0",
-		"sass": "^1.42.1",
-		"sass-loader": "^12.1.0",
-		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
-		"unplugin-element-plus": "^0.1.0",
-		"vite": "^2.5.10",
-		"vite-plugin-mock": "^2.9.6",
-		"vite-plugin-style-import": "^1.2.1",
-		"vite-plugin-svg-icons": "^1.0.4",
-		"vue-eslint-parser": "^7.11.0"
-	},
-	"lint-staged": {
-		"src/**/*.{js,vue}": [
-			"prettier --ignore-path .eslintignore --write",
-			"eslint --cache --fix",
-			"git add"
-		]
-	},
-	"config": {
-		"commitizen": {
-			"path": "./node_modules/cz-conventional-changelog"
-		}
-	},
-	"license": "MIT"
+  "name": "dex-admin-template",
+  "version": "0.0.1",
+  "scripts": {
+    "docs": "npx docsify serve docs -p 3001 --open",
+    "dev": "vite --host",
+    "build:prod": "vite build",
+    "build:stage": "vite build --mode staging",
+    "lint": "eslint --ext .vue,.js src",
+    "serve": "vite preview",
+    "prepare": "husky install",
+    "commit": "git-cz",
+    "czlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+  },
+  "dependencies": {
+    "@vueuse/core": "^6.5.3",
+    "axios": "^0.21.4",
+    "echarts": "^5.2.1",
+    "element-plus": "^1.1.0-beta.15",
+    "js-cookie": "^3.0.1",
+    "mitt": "^3.0.0",
+    "normalize.css": "^8.0.1",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.0.0-rc.9",
+    "unplugin-vue-components": "^0.15.3",
+    "vue": "^3.0.11",
+    "vue-echarts": "^6.0.0",
+    "vue-router": "^4.0.8"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@tailwindcss/postcss7-compat": "^2.2.14",
+    "@vitejs/plugin-vue": "^1.9.0",
+    "@vitejs/plugin-vue-jsx": "^1.1.8",
+    "@vue/compiler-sfc": "^3.2.14",
+    "autoprefixer": "^9",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "docsify-cli": "^4.4.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-define-config": "^1.0.9",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^7.18.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "mockjs": "^1.1.0",
+    "postcss": "^7",
+    "prettier": "^2.4.1",
+    "rollup": "^2.57.0",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14",
+    "unplugin-element-plus": "^0.1.0",
+    "vite": "^2.5.10",
+    "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-style-import": "^1.2.1",
+    "vite-plugin-svg-icons": "^1.0.4",
+    "vue-eslint-parser": "^7.11.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "prettier --ignore-path .eslintignore --write",
+      "eslint --cache --fix",
+      "git add"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "license": "MIT"
 }

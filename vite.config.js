@@ -36,7 +36,7 @@ export default ({ command }) =>
       viteMockServe({
         // default
         mockPath: "mock",
-        localEnabled: command === "dev:mock"
+        localEnabled: command === "serve"
       })
     ],
     resolve: {

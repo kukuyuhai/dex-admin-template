@@ -7,8 +7,17 @@ export const useUserStore = defineStore("user", {
       token: getToken(),
       name: "",
       avatar: "",
-      roles: []
+      roles: ["admin"]
     }
   },
-  actions() {}
+  getters: {
+    items: (state) => {
+      return state.token
+    }
+  },
+  actions: {
+    reseToken() {
+      console.log("resetToken")
+    }
+  }
 })
