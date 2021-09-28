@@ -6,7 +6,7 @@ import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import ElementPlus from "unplugin-element-plus/vite"
 import viteSvgIcons from "vite-plugin-svg-icons"
 import { viteMockServe } from "vite-plugin-mock"
-
+import WindiCSS from "vite-plugin-windicss"
 const { resolve } = require("path")
 
 // https://vitejs.dev/config/
@@ -37,7 +37,8 @@ export default ({ command }) =>
         // default
         mockPath: "mock",
         localEnabled: command === "serve"
-      })
+      }),
+      WindiCSS()
     ],
     resolve: {
       extensions: [".mjs", ".js", ".json"],

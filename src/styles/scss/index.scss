@@ -1,0 +1,10 @@
+// 导入所有样式
+@import "./transition.scss";
+@import "./scroll.scss";
+@import "./mixins.scss";
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

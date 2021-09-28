@@ -1,14 +1,13 @@
-import "@/assets/css/index.scss"
 import { setupRouterMountedApp } from "@/router/"
 import { setupEcharts } from "@/setup/echarts"
 import { setupStore } from "@/stores/"
 import { setupElementPlus } from "@/setup/element-plus"
 import { setupSvgIcon } from "./setup/svg-icon"
 import mitt from "mitt"
-import "normalize.css"
 import { createApp } from "vue"
 import App from "./App.vue"
-import "./styles/index.css"
+import "./styles/scss/index.scss"
+import "virtual:windi.css"
 import "./permission" // 注册路由权限
 const app = createApp(App)
 
