@@ -6,13 +6,14 @@ export const usePermissionStore = defineStore("permission", {
     addRoutes: []
   }),
   actions: {
-    async login() {
-      try {
-        // const result = await api.login({})
-        // console.log(result)
-      } catch (error) {
-        return error
-      }
+    generateRoutes() {
+      this.addRoutes.push({
+        path: "/asyn/view",
+        name: "asyncview",
+        component: "@/views/asyncRouteView/index.vue"
+      })
+
+      return this.addRoutes
     }
   }
 })

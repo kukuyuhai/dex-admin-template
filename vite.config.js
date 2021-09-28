@@ -46,6 +46,10 @@ export default ({ command }) =>
         "@": resolve(__dirname, "src")
       }
     },
+    server: {
+      open: true,
+      port: 8900
+    },
     optimizeDeps: {
       exclude: ["vue-demi", "consolidate"]
     },
