@@ -2,7 +2,7 @@ import axios from "axios"
 import { ElMessage } from "element-plus"
 import { useUserStore, pinia } from "@/stores/"
 import { getToken } from "@/utils/auth"
-const user = useUserStore(pinia)
+
 console.log(import.meta.env)
 // create an axios instance
 const service = axios.create({
@@ -15,7 +15,7 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     // 请求头塞入token，token过期时间为1天
-
+    const user = useUserStore(pinia)
     if (user.token) {
       config.headers["Authorization"] = getToken()
     }
@@ -46,21 +46,21 @@ service.interceptors.response.use(
         })
 
         if (res.code == 401 || res.code == 403) {
-          user.reseToken()
-          // store.dispatch("user/resetToken").then(() => {
-          //   location.reload()
-          // })
+          useUserStore(pinia)
+            .reseToken()
+            .then(() => {
+              location.reload()
+            })
         }
         // 处理除了200以外的其他异常，直接抛出由请求自己处理
         return Promise.reject(new Error(res.ElMessage || "Error"))
       } else {
-        return res
+        return res.data
       }
     }
   },
   (error) => {
     console.log("err" + error) // for debug
-    user.reseToken()
     ElMessage({
       ElMessage: error.ElMessage,
       type: "error",

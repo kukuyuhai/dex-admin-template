@@ -7,7 +7,14 @@ import {
   ElForm,
   ElFormItem,
   ElInput,
-  ElConfigProvider
+  ElConfigProvider,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElDropdown,
+  ElDropdownItem,
+  ElMenu,
+  ElMenuItem,
+  ElScrollbar
 } from "element-plus"
 //  样式通过vite自动导入
 const compList = [
@@ -19,7 +26,14 @@ const compList = [
   ElForm,
   ElFormItem,
   ElInput,
-  ElConfigProvider
+  ElConfigProvider,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElDropdown,
+  ElDropdownItem,
+  ElMenu,
+  ElMenuItem,
+  ElScrollbar
 ]
 // element comp 全局引入注册,
 const setupElementPlus = (app) => {

@@ -6,7 +6,7 @@ import { setupSvgIcon } from "./setup/svg-icon"
 import mitt from "mitt"
 import { createApp } from "vue"
 import App from "./App.vue"
-import "./styles/scss/index.scss"
+import "./styles/index.scss"
 import "virtual:windi.css"
 import "./permission" // 注册路由权限
 const app = createApp(App)

@@ -26,6 +26,7 @@ specifiers:
   mitt: ^3.0.0
   mockjs: ^1.1.0
   nprogress: ^0.2.0
+  path-to-regexp: ^6.2.0
   pinia: ^2.0.0-rc.9
   postcss: ^8.3.8
   prettier: ^2.4.1
@@ -53,6 +54,7 @@ dependencies:
   js-cookie: registry.nlark.com/js-cookie/3.0.1
   mitt: registry.nlark.com/mitt/3.0.0
   nprogress: registry.nlark.com/nprogress/0.2.0
+  path-to-regexp: registry.nlark.com/path-to-regexp/6.2.0
   pinia: registry.nlark.com/pinia/2.0.0-rc.9_vue@3.2.14
   postcss: registry.npmmirror.com/postcss/8.3.8
   unplugin-vue-components: registry.npmmirror.com/unplugin-vue-components/0.15.4_2acf6a0a08c1779e2786e535308d9e8c
@@ -5041,7 +5043,6 @@ packages:
     resolution: {integrity: sha1-97OAMzYQTDRoia3s5hRmkjBkXzg=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/path-to-regexp/download/path-to-regexp-6.2.0.tgz}
     name: path-to-regexp
     version: 6.2.0
-    dev: true
 
   registry.nlark.com/path-type/3.0.0:
     resolution: {integrity: sha1-zvMdyOCho7sNEFwM2Xzzv0f0428=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/path-type/download/path-type-3.0.0.tgz}
@@ -5149,6 +5150,9 @@ packages:
     engines: {node: '>= 10'}
     peerDependencies:
       ts-node: '>=9.0.0'
+    peerDependenciesMeta:
+      ts-node:
+        optional: true
     dependencies:
       import-cwd: registry.nlark.com/import-cwd/3.0.0
       lilconfig: registry.nlark.com/lilconfig/2.0.3
@@ -7597,6 +7601,11 @@ packages:
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
     dependencies:
       '@vueuse/shared': registry.npmmirror.com/@vueuse/shared/6.1.0_vue@3.2.14
       vue: registry.npmmirror.com/vue/3.2.14
@@ -7630,6 +7639,11 @@ packages:
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
     dependencies:
       vue: registry.npmmirror.com/vue/3.2.14
       vue-demi: registry.nlark.com/vue-demi/0.11.4_vue@3.2.14

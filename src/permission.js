@@ -15,13 +15,20 @@ router.beforeEach(async (to, from, next) => {
   // 判断用户是否已经登录
   const hasToken = getToken()
 
-  if (whiteList.includes(to.path)) {
-    next()
+  if (hasToken) {
+    if (to.path === "/login") {
+      // if is logged in, redirect to the home page
+      next({ path: "/" })
+      NProgress.done()
+    } else {
+      next()
+    }
   } else {
-    if (hasToken) {
+    if (whiteList.indexOf(to.path) !== -1) {
       next()
     } else {
-      next({ path: "/login" })
+      next(`/login?redirect=${to.path}`)
+      NProgress.done()
     }
   }
 })
