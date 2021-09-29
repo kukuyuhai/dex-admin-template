@@ -26,6 +26,7 @@ specifiers:
   mitt: ^3.0.0
   mockjs: ^1.1.0
   nprogress: ^0.2.0
+  path-browserify: ^1.0.1
   path-to-regexp: ^6.2.0
   pinia: ^2.0.0-rc.9
   postcss: ^8.3.8
@@ -53,6 +54,7 @@ dependencies:
   js-cookie: registry.nlark.com/js-cookie/3.0.1
   mitt: registry.nlark.com/mitt/3.0.0
   nprogress: registry.nlark.com/nprogress/0.2.0
+  path-browserify: registry.nlark.com/path-browserify/1.0.1
   path-to-regexp: registry.nlark.com/path-to-regexp/6.2.0
   pinia: registry.nlark.com/pinia/2.0.0-rc.9_vue@3.2.14
   postcss: registry.npmmirror.com/postcss/8.3.8
@@ -4976,6 +4978,12 @@ packages:
     version: 0.1.1
     engines: {node: '>=0.10.0'}
     dev: true
+
+  registry.nlark.com/path-browserify/1.0.1:
+    resolution: {integrity: sha1-2YRUqcN1PVeQhg8W9ohnueRr4f0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/path-browserify/download/path-browserify-1.0.1.tgz}
+    name: path-browserify
+    version: 1.0.1
+    dev: false
 
   registry.nlark.com/path-case/3.0.4:
     resolution: {integrity: sha1-kWhkUzTrlCZYN1xW+AtMDLX4LG8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/path-case/download/path-case-3.0.4.tgz}

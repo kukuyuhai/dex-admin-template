@@ -54,6 +54,7 @@ export const useUserStore = defineStore("user", {
     },
     reseToken() {
       console.log("resetToken")
+      removeToken()
     }
   }
 })

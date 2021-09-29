@@ -15,8 +15,7 @@
   import Sidebar from "./components/Sidebar/index.vue"
   import AppMain from "./components/AppMain.vue"
   import { computed, defineComponent } from "vue"
-  import { useAppStore } from "../../stores"
-  //   import ResizeMixin from "./mixin/ResizeHandler"
+  import { useAppStore, useSettingsStore } from "@/stores"
 
   export default defineComponent({
     name: "Layout",
@@ -27,6 +26,7 @@
     },
     setup() {
       const appstore = useAppStore()
+      const settings = useSettingsStore()
       const classObj = computed(() => {
         return {
           hideSidebar: !appstore.sidebar.opened,
@@ -36,36 +36,11 @@
       })
 
       return {
-        fixedHeader: true,
+        fixedHeader: settings.fixedHeader,
         classObj,
         sidebar: appstore.sidebar
       }
     }
-    //     mixins: [ResizeMixin],
-    //     computed: {
-    //       sidebar() {
-    //         return this.$store.state.app.sidebar
-    //       },
-    //       device() {
-    //         return this.$store.state.app.device
-    //       },
-    //       fixedHeader() {
-    //         return this.$store.state.settings.fixedHeader
-    //       },
-    //       classObj() {
-    //         return {
-    //           hideSidebar: !this.sidebar.opened,
-    //           openSidebar: this.sidebar.opened,
-    //           withoutAnimation: this.sidebar.withoutAnimation,
-    //           mobile: this.device === "mobile"
-    //         }
-    //       }
-    //     },
-    //     methods: {
-    //       handleClickOutside() {
-    //         this.$store.dispatch("app/closeSideBar", { withoutAnimation: false })
-    //       }
-    //     }
   })
 </script>
 <style lang="scss" scoped>

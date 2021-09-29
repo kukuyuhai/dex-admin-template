@@ -14,7 +14,9 @@ import {
   ElDropdownItem,
   ElMenu,
   ElMenuItem,
-  ElScrollbar
+  ElScrollbar,
+  ElDropdownMenu,
+  ElSubMenu
 } from "element-plus"
 //  样式通过vite自动导入
 const compList = [
@@ -33,7 +35,9 @@ const compList = [
   ElDropdownItem,
   ElMenu,
   ElMenuItem,
-  ElScrollbar
+  ElScrollbar,
+  ElDropdownMenu,
+  ElSubMenu
 ]
 // element comp 全局引入注册,
 const setupElementPlus = (app) => {

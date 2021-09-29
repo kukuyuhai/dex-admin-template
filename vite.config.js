@@ -15,9 +15,7 @@ export default ({ command }) =>
       vue({
         refTransform: true
       }),
-      vueJsx({
-        // options are passed on to @vue/babel-plugin-jsx
-      }),
+      vueJsx(),
       ElementPlus({
         useSource: true
       }),

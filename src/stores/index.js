@@ -8,3 +8,4 @@ export function setupStore(app) {
 export * from "./modules/permission"
 export * from "./modules/app"
 export * from "./modules/user"
+export * from "./modules/settings"

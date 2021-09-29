@@ -4,6 +4,7 @@ import NProgress from "nprogress"
 import "nprogress/nprogress.css"
 import { getToken } from "@/utils/auth"
 import { useUserStore, usePermissionStore, pinia } from "@/stores/"
+import { ElMessage } from "element-plus"
 // 路由白名单
 const whiteList = ["/login"]
 
@@ -36,7 +37,11 @@ router.beforeEach(async (to, from, next) => {
           accessRoutes.forEach((route) => router.addRoute(route))
           next({ ...to, replace: true })
         } catch (error) {
-          console.log("error====", error)
+          console.log("permission error", error)
+          await userStore.reseToken()
+          ElMessage.error(error || "Has Error")
+          next(`/login?redirect=${to.path}`)
+          NProgress.done()
         }
       }
     }
