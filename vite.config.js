@@ -1,8 +1,6 @@
 import vue from "@vitejs/plugin-vue"
 import vueJsx from "@vitejs/plugin-vue-jsx"
 import { defineConfig } from "vite"
-import Components from "unplugin-vue-components/vite"
-import { ElementPlusResolver } from "unplugin-vue-components/resolvers"
 import ElementPlus from "unplugin-element-plus/vite"
 import viteSvgIcons from "vite-plugin-svg-icons"
 import { viteMockServe } from "vite-plugin-mock"
@@ -20,13 +18,8 @@ export default ({ command }) =>
       vueJsx({
         // options are passed on to @vue/babel-plugin-jsx
       }),
-      ElementPlus(),
-      Components({
-        resolvers: [
-          ElementPlusResolver({
-            importStyle: "sass"
-          })
-        ]
+      ElementPlus({
+        useSource: true
       }),
       viteSvgIcons({
         // 配置路劲在你的src里的svg存放文件
@@ -43,7 +36,8 @@ export default ({ command }) =>
     resolve: {
       extensions: [".mjs", ".js", ".json"],
       alias: {
-        "@": resolve(__dirname, "src")
+        "@": resolve(__dirname, "src"),
+        "~/": `${resolve(__dirname, "src")}/`
       }
     },
     server: {
@@ -51,11 +45,18 @@ export default ({ command }) =>
       port: 8900
     },
     optimizeDeps: {
+      include: ["@vueuse/core"],
       exclude: ["vue-demi", "consolidate"]
     },
     css: {
       preprocessorOptions: {
         // 配置scss，less等
+        scss: {
+          additionalData: `
+          @use "~/styles/element/index.scss" as *;
+          @use "~/styles/variables.scss" as *;
+          `
+        }
       }
     },
     build: {

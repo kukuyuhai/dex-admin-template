@@ -2,9 +2,15 @@
 @import "./transition.scss";
 @import "./scroll.scss";
 @import "./mixin.scss";
+@import "./sidebar.scss";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+svg,
+img {
+  display: inline-block;
 }

@@ -1,10 +1,10 @@
-#### 多页面
+#### 项目介绍
 
-vite 配置 build rollup options 用于打包多页面应用。
+> 使用 composition Api 重新构建 Vue-element-admin。
 
 #### dependence
 
-- [element-plus]
+- [element-plus](https://element-plus.gitee.io/zh-CN/)
 - [vue-echarts](github.com/ecomfe/vue-echarts)
 - [mitt](github.com/developit/mitt) 发布订阅 pub/sub
 - [docsify](https://docsify.js.org/#/) docsify 文档地址
@@ -16,6 +16,9 @@ vite 配置 build rollup options 用于打包多页面应用。
 - [ ] 黑夜模式 powerby windcss
 - [x] 切换 tailwindcss 为 windcss
 - [ ] 路由权限控制
+- [ ] Mock
+- [ ] 使用 composition Api 重构
+- [ ] 编写文档
 
 #### 发布
 

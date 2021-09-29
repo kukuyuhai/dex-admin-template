@@ -1,5 +1,5 @@
 import { defineStore } from "pinia"
-import { getToken, setToken } from "@/utils/auth"
+import { getToken, setToken, removeToken } from "@/utils/auth"
 import { login as userLogin, getInfo } from "@/api/user"
 
 export const useUserStore = defineStore("user", {
@@ -44,6 +44,10 @@ export const useUserStore = defineStore("user", {
       } catch (error) {
         return { roles: [] }
       }
+    },
+    async logout() {
+      this.token = ""
+      removeToken()
     },
     setToken(token) {
       this.token = token

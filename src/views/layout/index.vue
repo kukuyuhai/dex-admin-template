@@ -1,10 +1,5 @@
 <template>
   <div :class="classObj" class="app-wrapper">
-    <div
-      v-if="device === 'mobile' && sidebar.opened"
-      class="drawer-bg"
-      @click="handleClickOutside"
-    />
     <sidebar class="sidebar-container" />
     <div class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
@@ -17,9 +12,10 @@
 
 <script>
   import Navbar from "./components/Navbar.vue"
-  import Sidebar from "./components/Sidebar/sidebar.vue"
+  import Sidebar from "./components/Sidebar/index.vue"
   import AppMain from "./components/AppMain.vue"
-  import { defineComponent } from "vue"
+  import { computed, defineComponent } from "vue"
+  import { useAppStore } from "../../stores"
   //   import ResizeMixin from "./mixin/ResizeHandler"
 
   export default defineComponent({
@@ -30,8 +26,19 @@
       AppMain
     },
     setup() {
+      const appstore = useAppStore()
+      const classObj = computed(() => {
+        return {
+          hideSidebar: !appstore.sidebar.opened,
+          openSidebar: appstore.sidebar.opened,
+          withoutAnimation: appstore.sidebar.withoutAnimation
+        }
+      })
+
       return {
-        fixedHeader: true
+        fixedHeader: true,
+        classObj,
+        sidebar: appstore.sidebar
       }
     }
     //     mixins: [ResizeMixin],
@@ -62,8 +69,7 @@
   })
 </script>
 <style lang="scss" scoped>
-  @import "@/styles/mixin.scss";
-  @import "@/styles/variables.scss";
+  @import "~/styles/mixin.scss";
 
   .app-wrapper {
     @include clearfix;

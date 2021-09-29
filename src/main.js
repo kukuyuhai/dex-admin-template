@@ -1,3 +1,4 @@
+import "virtual:windi.css"
 import { setupRouterMountedApp } from "@/router/"
 import { setupEcharts } from "@/setup/echarts"
 import { setupStore } from "@/stores/"
@@ -7,7 +8,6 @@ import mitt from "mitt"
 import { createApp } from "vue"
 import App from "./App.vue"
 import "./styles/index.scss"
-import "virtual:windi.css"
 import "./permission" // 注册路由权限
 const app = createApp(App)
 

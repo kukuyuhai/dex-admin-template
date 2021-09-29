@@ -1,3 +1,5 @@
 export default {
-  title: import.meta.env.VITE_APP_TITLE || "KstoneAdmin"
+  title: import.meta.env.VITE_APP_TITLE || "dex-admin App",
+  // 侧边栏logo
+  sidebarLogo: true
 }

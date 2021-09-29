@@ -1,68 +1,71 @@
 <template>
   <div class="navbar">
-    <!-- <hamburger
-      :is-active="sidebar.opened"
-      class="hamburger-container"
-      @toggleClick="toggleSideBar"
-    /> -->
-
+    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleClick" />
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="logosrc" style="width: 64px" class="user-avatar" />
-          <span class="user-name">Admin</span>
+          <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
+          <span class="user-name">{{ name }}</span>
           <i class="el-icon-caret-bottom" />
         </div>
-
-        <el-dropdown-menu class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item> 首页 </el-dropdown-item>
-          </router-link>
-          <!-- <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a> -->
-          <el-dropdown-item divided @click="logout">
-            <span style="display: block">退出登录</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
+        <template #dropdown>
+          <el-dropdown-menu class="user-dropdown">
+            <router-link to="/">
+              <el-dropdown-item> 首页 </el-dropdown-item>
+            </router-link>
+            <a target="_blank" href="https://github.com/kukuyuhai/dex-admin-template/">
+              <el-dropdown-item>Github</el-dropdown-item>
+            </a>
+            <a target="_blank" href="https://kukuyuhai.github.io/dex-admin-template/#/">
+              <el-dropdown-item>Docs</el-dropdown-item>
+            </a>
+            <el-dropdown-item divided @click="useLogout">
+              <span style="display: block">退出登录</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
       </el-dropdown>
     </div>
   </div>
 </template>
 
 <script>
-  // import { mapGetters } from "vuex"
   import Breadcrumb from "@/components/Breadcrumb/index.vue"
-  // import Hamburger from "@/components/Hamburger/index.vue"
-  import logosrc from "@/assets/logo.png"
-  export default {
+  import Hamburger from "@/components/Hamburger/index.vue"
+  import { defineComponent } from "vue"
+  import { useAppStore, useUserStore } from "@/stores"
+  import { useRoute, useRouter } from "vue-router"
+  export default defineComponent({
     components: {
-      Breadcrumb
-      // Hamburger
+      Breadcrumb,
+      Hamburger
     },
-    data() {
-      return {
-        logosrc
+    setup() {
+      const { sidebar, toggleSideBar } = useAppStore()
+      const { avatar, name, logout } = useUserStore()
+      const $router = useRouter()
+      const $route = useRoute()
+
+      function toggleClick() {
+        toggleSideBar()
       }
-    },
-    computed: {
-      // ...mapGetters(["sidebar", "avatar", "name"])
-    },
-    methods: {
-      toggleSideBar() {
-        this.$store.dispatch("app/toggleSideBar")
-      },
-      async logout() {
-        await this.$store.dispatch("user/logout")
-        this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+
+      async function useLogout() {
+        await logout()
+        $router.push(`/login?redirect=${$route.fullPath}`)
+      }
+
+      return {
+        sidebar,
+        avatar,
+        name,
+        toggleClick,
+        useLogout
       }
     }
-  }
+  })
 </script>
 
 <style lang="scss" scoped>
@@ -119,8 +122,11 @@
         }
       }
 
-      .avatar-container {
+      :deep(.avatar-container) {
         margin-right: 30px;
+        display: flex;
+        height: 100%;
+        align-items: center;
 
         .avatar-wrapper {
           position: relative;
