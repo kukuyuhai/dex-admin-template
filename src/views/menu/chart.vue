@@ -1,4 +1,6 @@
-<template> Chart </template>
+<template>
+  <span>chart</span>
+</template>
 
 <script>
   export default {

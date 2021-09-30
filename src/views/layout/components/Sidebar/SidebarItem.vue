@@ -40,7 +40,7 @@
 
 <script>
   import path from "path-browserify"
-  import { isExternal } from "@/utils/validate"
+  import { isExternal } from "@core/utils/validate"
   import Item from "./Item.vue"
   import AppLink from "./Link.vue"
   // import FixiOSBug from "./FixiOSBug"
@@ -102,7 +102,6 @@
         if (isExternal(this.basePath)) {
           return this.basePath
         }
-        console.log(this.basePath, "=====", routePath)
         return path.resolve(this.basePath, routePath)
       }
     }

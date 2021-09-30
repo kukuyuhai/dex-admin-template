@@ -1,7 +1,7 @@
 import axios from "axios"
 import { ElMessage } from "element-plus"
 import { useUserStore, pinia } from "@/stores/"
-import { getToken } from "@/utils/auth"
+import { getToken } from "@core/utils/auth"
 
 console.log(import.meta.env)
 // create an axios instance

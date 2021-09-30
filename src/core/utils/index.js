@@ -20,4 +20,4 @@ function param2Obj(url) {
   return obj
 }
 
-module.exports = { param2Obj }
+export { param2Obj }

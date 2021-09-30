@@ -35,7 +35,8 @@ export default ({ command }) =>
       extensions: [".mjs", ".js", ".json"],
       alias: {
         "@": resolve(__dirname, "src"),
-        "~/": `${resolve(__dirname, "src")}/`
+        "~/": `${resolve(__dirname, "src")}/`,
+        "@core": resolve(__dirname, "src/core")
       }
     },
     server: {

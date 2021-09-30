@@ -1,18 +1,18 @@
 import router from "@/router/"
-import getPageTitle from "@/utils/get-page-title"
+import getPageTitle from "@core/utils/get-page-title"
 import NProgress from "nprogress"
 import "nprogress/nprogress.css"
-import { getToken } from "@/utils/auth"
+import { getToken } from "@core/utils/auth"
 import { useUserStore, usePermissionStore, pinia } from "@/stores/"
 import { ElMessage } from "element-plus"
+import defaultSettings from "@/settings"
+
 // 路由白名单
 const whiteList = ["/login"]
 
 router.beforeEach(async (to, from, next) => {
-  // if (to.name !== "Login" && !isAuthenticated) next({ name: "Login" })
-  // else next()
   NProgress.start()
-  document.title = getPageTitle(to.meta.title)
+  document.title = getPageTitle(to.meta.title, defaultSettings.title)
 
   // 判断用户是否已经登录
   const hasToken = getToken()

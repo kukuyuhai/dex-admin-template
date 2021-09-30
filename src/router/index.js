@@ -32,12 +32,6 @@ export const constantRoutes = [
         name: "index",
         component: () => import("@/views/form/index.vue"),
         meta: { icon: "error-404", title: "form" }
-      },
-      {
-        path: "color",
-        name: "color",
-        component: () => import("@/views/home/index.vue"),
-        meta: { icon: "error-404", title: "color" }
       }
     ]
   },
