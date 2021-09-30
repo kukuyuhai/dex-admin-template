@@ -40,7 +40,7 @@ service.interceptors.response.use(
     } else {
       if (res.code !== 200) {
         ElMessage({
-          ElMessage: res.ElMessage || "Error",
+          message: res.message || "Error",
           type: "error",
           duration: 2 * 1000
         })
@@ -53,7 +53,7 @@ service.interceptors.response.use(
             })
         }
         // 处理除了200以外的其他异常，直接抛出由请求自己处理
-        return Promise.reject(new Error(res.ElMessage || "Error"))
+        return Promise.reject(new Error(res.message || "Error"))
       } else {
         return res.data
       }

@@ -57,7 +57,7 @@ module.exports = [
       // mock error
       if (!info) {
         return {
-          code: 50008,
+          code: 401,
           message: "Login failed, unable to get user details."
         }
       }

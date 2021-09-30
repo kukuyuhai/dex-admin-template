@@ -61,9 +61,10 @@ export const useUserStore = defineStore("user", {
     setToken(token) {
       this.token = token
     },
-    reseToken() {
+    async reseToken() {
       Object.assign(this.$state, getDefaultState())
       removeToken()
+      return true
     }
   }
 })
