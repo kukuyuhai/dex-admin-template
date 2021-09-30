@@ -3,7 +3,7 @@ import { defineStore } from "pinia"
 export const useAppStore = defineStore("app", {
   state: () => ({
     sidebar: {
-      opened: false,
+      opened: true,
       withoutAnimation: false
     }
   }),

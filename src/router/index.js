@@ -10,36 +10,22 @@ export const constantRoutes = [
   {
     path: "/",
     component: Layout,
-    redirect: "/home",
-    hidden: true,
+    redirect: "/dashboard",
     children: [
       {
-        path: "home",
-        name: "Home",
+        path: "dashboard",
+        name: "dashboard",
         component: () => import("@/views/dashboard/index.vue"),
-        meta: { title: "首页" }
+        meta: { title: "仪表盘", icon: "dashboard" }
       }
     ]
   },
-  {
-    path: "/login",
-    name: "login",
-    component: login,
-    meta: { title: "登录" }
-  }
-]
-
-/**
- * 需要根据用户角色动态加载的路由
- */
-
-export const asyncRoutes = [
   {
     path: "/form",
     name: "form",
     component: Layout,
     redirect: "/form/index",
-    meta: { icon: "el-icon-document-copy", title: "color" },
+    meta: { icon: "el-icon-document-copy", title: "表单" },
     children: [
       {
         path: "index",
@@ -54,8 +40,49 @@ export const asyncRoutes = [
         meta: { icon: "error-404", title: "color" }
       }
     ]
-  }
+  },
+  {
+    path: "/menu",
+    name: "menu",
+    component: Layout,
+    redirect: "/menu/table",
+    meta: { title: "Table", icon: "el-icon-menu" },
+    children: [
+      {
+        path: "table",
+        name: "menu-table",
+        component: () => import("@/views/menu/table.vue"),
+        meta: { title: "表格", icon: "el-icon-s-grid" }
+      },
+      {
+        path: "chart",
+        name: "menu-chart",
+        component: () => import("@/views/menu/chart.vue"),
+        meta: { title: "图表", icon: "el-icon-pie-chart" }
+      }
+    ]
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: login,
+    hidden: true,
+    meta: { title: "登录" }
+  },
+
+  {
+    path: "/404",
+    component: () => import("@/views/error-pages/404.vue"),
+    hidden: true
+  },
+  { path: "/:catchAll(.*)", redirect: "/404", hidden: true }
 ]
+
+/**
+ * 需要根据用户角色动态加载的路由
+ */
+
+export const asyncRoutes = []
 
 /**
  * 创建路由实例
