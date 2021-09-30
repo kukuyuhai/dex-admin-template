@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import { defineComponent, getCurrentInstance, reactive, toRefs, watch } from "vue"
+  import { defineComponent, getCurrentInstance, reactive, ref, toRefs, watch } from "vue"
   import { useUserStore } from "@/stores"
   import { useRoute, useRouter } from "vue-router"
   export default defineComponent({
@@ -34,23 +34,28 @@
       const { ctx } = getCurrentInstance()
       const userStore = useUserStore()
       const router = useRouter()
-      const route = useRoute()
+      const $route = useRoute()
+      const redirect = ref("")
+      const otherQuery = ref({})
 
-      watch(route, (nv) => {
-        console.log(nv)
-      })
-      //   watch: {
-      // $route: {
-      //   handler: function (route) {
-      //     const query = route.query
-      //     if (query) {
-      //       this.redirect = query.redirect
-      //       this.otherQuery = this.getOtherQuery(query)
-      //     }
-      //   },
-      //   immediate: true,
-      // },
-      // },
+      watch(
+        $route,
+        (route) => {
+          const query = route.query
+          if (query) {
+            redirect.value = query.redirect
+            otherQuery.value = getOtherQuery()
+          }
+        },
+        {
+          immediate: true
+        }
+      )
+
+      function getOtherQuery(query) {
+        return query
+      }
+
       const state = reactive({
         modelForm: {
           username: "admin",
@@ -83,7 +88,7 @@
                 .then((result) => {
                   console.log(result)
                   // this.redirect || "/home", query: this.otherQuery
-                  router.push({ path: "/home" })
+                  router.push({ path: redirect.value || "/" })
                 })
                 .catch((err) => {
                   console.log(err)

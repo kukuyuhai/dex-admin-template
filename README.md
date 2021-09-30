@@ -15,8 +15,8 @@
 
 - [ ] 黑夜模式 powerby windcss
 - [x] 切换 tailwindcss 为 windcss
-- [ ] 路由权限控制
-- [ ] Mock
+- [x] 路由权限控制
+- [x] Mock
 - [ ] 使用 composition Api 重构
 - [ ] 编写文档
 - [ ] 生产环境优化

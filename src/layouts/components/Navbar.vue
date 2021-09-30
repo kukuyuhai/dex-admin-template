@@ -13,7 +13,7 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item> 首页 </el-dropdown-item>
+              <el-dropdown-item> 仪表盘 </el-dropdown-item>
             </router-link>
             <a target="_blank" href="https://github.com/kukuyuhai/dex-admin-template/">
               <el-dropdown-item>Github</el-dropdown-item>

@@ -1,6 +1,6 @@
 import login from "@/views/login/index.vue"
 import { createRouter, createWebHashHistory } from "vue-router"
-import Layout from "@/views/layout/index.vue"
+import Layout from "@/layouts/index.vue"
 
 /**
  * 没有权限要求的基本页面

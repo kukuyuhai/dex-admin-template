@@ -30,8 +30,8 @@
   import { computed, defineComponent } from "vue"
   import { useAppStore } from "@/stores"
   import { useRoute } from "vue-router"
-  import { useSettingsStore } from "../../../../stores/modules/settings"
-  import { usePermissionStore } from "../../../../stores"
+  import { useSettingsStore } from "@/stores/modules/settings"
+  import { usePermissionStore } from "@/stores"
 
   export default defineComponent({
     name: "Sidebar",

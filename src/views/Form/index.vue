@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" :model="form" label-width="120px">
+  <el-form ref="form" style="width: 560px; padding-top: 20px" :model="form" label-width="120px">
     <el-form-item label="Activity name">
       <el-input v-model="form.name"></el-input>
     </el-form-item>
@@ -18,7 +18,7 @@
           style="width: 100%"
         ></el-date-picker>
       </el-col>
-      <el-col class="line" :span="2">-</el-col>
+      <el-col class="line" :span="2"> - </el-col>
       <el-col :span="11">
         <el-time-picker
           v-model="form.date2"
