@@ -18,7 +18,7 @@
       },
       color: {
         type: String,
-        default: "#889aa4"
+        default: "#ffffff"
       }
     },
     setup(props) {

@@ -14,25 +14,21 @@
     },
     render(context) {
       const { icon, title } = context
-      const vnodes = []
-
-      const App = () => {
-        if (icon) {
-          if (icon.includes("el-icon")) {
-            vnodes.push()
-          } else {
-            vnodes.push(<svg-icon icon-class={icon} />)
-          }
+      let vnodes = []
+      if (icon) {
+        if (icon.includes("el-icon")) {
+          vnodes.push(<i class={[icon, "sub-el-icon"]} />)
+        } else {
+          vnodes.push(<svg-icon icon-class={icon} />)
         }
-
-        if (title) {
-          vnodes.push(<span slot="title">{title}</span>)
-        }
-
-        return <>{vnodes}</>
       }
 
-      return <App />
+      return (
+        <>
+          {vnodes}
+          <span>{title}</span>
+        </>
+      )
     }
   }
 </script>

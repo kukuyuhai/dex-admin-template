@@ -1,16 +1,19 @@
 import { defineStore } from "pinia"
 import { getToken, setToken, removeToken } from "@/utils/auth"
-import { login as userLogin, getInfo } from "@/api/user"
+import { login as userLogin, getInfo, logout as userLogout } from "@/api/user"
+import { resetRouter } from "@/router/"
+
+const getDefaultState = () => {
+  return {
+    token: getToken(),
+    name: "",
+    avatar: "",
+    roles: []
+  }
+}
 
 export const useUserStore = defineStore("user", {
-  state: () => {
-    return {
-      token: getToken(),
-      name: "",
-      avatar: "",
-      roles: []
-    }
-  },
+  state: () => getDefaultState(),
   getters: {
     hasRoles: (state) => {
       return state.roles && state.roles.length > 0
@@ -46,14 +49,20 @@ export const useUserStore = defineStore("user", {
       }
     },
     async logout() {
-      this.token = ""
-      removeToken()
+      try {
+        await userLogout(this.token)
+        resetRouter()
+        this.reseToken()
+      } catch (error) {
+        console.log(error)
+        return error
+      }
     },
     setToken(token) {
       this.token = token
     },
     reseToken() {
-      console.log("resetToken")
+      Object.assign(this.$state, getDefaultState())
       removeToken()
     }
   }

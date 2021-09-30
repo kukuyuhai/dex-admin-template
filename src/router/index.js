@@ -39,12 +39,19 @@ export const asyncRoutes = [
     name: "form",
     component: Layout,
     redirect: "/form/index",
+    meta: { icon: "el-icon-document-copy", title: "color" },
     children: [
       {
         path: "index",
         name: "index",
         component: () => import("@/views/form/index.vue"),
-        meta: { icon: "el-icon-arrow-right", title: "form" }
+        meta: { icon: "error-404", title: "form" }
+      },
+      {
+        path: "color",
+        name: "color",
+        component: () => import("@/views/home/index.vue"),
+        meta: { icon: "error-404", title: "color" }
       }
     ]
   }
@@ -53,12 +60,15 @@ export const asyncRoutes = [
 /**
  * 创建路由实例
  */
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes: constantRoutes,
-  strict: true,
-  scrollBehavior: () => ({ left: 0, top: 0 })
-})
+const createbaseRouter = () =>
+  createRouter({
+    history: createWebHashHistory(),
+    routes: constantRoutes,
+    strict: true,
+    scrollBehavior: () => ({ left: 0, top: 0 })
+  })
+
+const router = createbaseRouter()
 
 /**
  * 挂载路由方法
@@ -70,6 +80,14 @@ export function setupRouterMountedApp(app) {
   router.isReady().then(() => {
     app.mount("#app")
   })
+}
+
+/**
+ * 重置路由
+ */
+export function resetRouter() {
+  const newRouter = createbaseRouter()
+  router.resolve = newRouter.resolve // reset router
 }
 
 // 默认导出

@@ -1,4 +1,5 @@
 import "virtual:windi.css"
+import "element-plus/theme-chalk/src/index.scss"
 import { setupRouterMountedApp } from "@/router/"
 import { setupEcharts } from "@/setup/echarts"
 import { setupStore } from "@/stores/"
@@ -7,9 +8,9 @@ import { setupSvgIcon } from "./setup/svg-icon"
 import mitt from "mitt"
 import { createApp } from "vue"
 import App from "./App.vue"
-import "./styles/index.scss"
 import "./permission" // 注册路由权限
 const app = createApp(App)
+import "./styles/index.scss"
 
 // 装载Echarts
 setupEcharts(app)

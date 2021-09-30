@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@commitlint/cli': ^13.2.0
   '@commitlint/config-conventional': ^13.2.0
+  '@element-plus/icons': ^0.0.11
   '@tailwindcss/postcss7-compat': ^2.2.16
   '@vitejs/plugin-vue': ^1.9.2
   '@vitejs/plugin-vue-jsx': ^1.1.8
@@ -47,6 +48,7 @@ specifiers:
   windicss: ^3.1.8
 
 dependencies:
+  '@element-plus/icons': registry.nlark.com/@element-plus/icons/0.0.11
   '@vueuse/core': registry.npmmirror.com/@vueuse/core/6.5.3_vue@3.2.14
   axios: registry.nlark.com/axios/0.21.4
   echarts: registry.nlark.com/echarts/5.2.1
@@ -508,6 +510,12 @@ packages:
       chalk: registry.nlark.com/chalk/4.1.2
     dev: true
     optional: true
+
+  registry.nlark.com/@element-plus/icons/0.0.11:
+    resolution: {integrity: sha1-mxh8ACd0VIuRGFDRf6X8L5pRX1c=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@element-plus/icons/download/@element-plus/icons-0.0.11.tgz}
+    name: '@element-plus/icons'
+    version: 0.0.11
+    dev: false
 
   registry.nlark.com/@eslint/eslintrc/0.4.3:
     resolution: {integrity: sha1-nkKYHvA1vrPdSa3ResuW6P9vOUw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/@eslint/eslintrc/download/@eslint/eslintrc-0.4.3.tgz}

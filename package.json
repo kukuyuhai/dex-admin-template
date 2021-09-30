@@ -13,6 +13,7 @@
     "czlog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
+    "@element-plus/icons": "^0.0.11",
     "@vueuse/core": "^6.5.3",
     "axios": "^0.21.4",
     "echarts": "^5.2.1",
