@@ -1,5 +1,4 @@
-import { useRouter } from "vue-router"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 // mapstores
 export function useCore() {
   const route = useRoute()

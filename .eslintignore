@@ -3,3 +3,6 @@ public
 node_modules
 dist
 tsconfig.json
+pnpm-lock.lock
+package.json
+README.md
