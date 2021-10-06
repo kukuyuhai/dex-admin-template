@@ -21,6 +21,7 @@
 - [ ] 编写文档
 - [ ] 生产环境优化
 - [ ] 使用 css vairables 取代 scss vairables 以及 vue3css 变量新特性
+- [ ] element-plus 国际化
 
 #### 发布
 
