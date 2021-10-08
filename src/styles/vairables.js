@@ -1,7 +1,7 @@
 // theme 主题
 export default {
   menuText: "white",
-  menuActiveText: "white",
+  menuActiveText: "#4ab7bd",
   subMenuActiveText: "white",
   menuBg: "#08254f",
   menuHover: "#357fed",

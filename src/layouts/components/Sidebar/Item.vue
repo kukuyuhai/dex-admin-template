@@ -25,7 +25,7 @@
 
       return (
         <>
-          {vnodes}
+          <>{vnodes}</>
           <span>{title}</span>
         </>
       )
