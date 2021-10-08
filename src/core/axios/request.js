@@ -3,7 +3,6 @@ import { ElMessage } from "element-plus"
 import { useUserStore, pinia } from "@/stores/"
 import { getToken } from "@core/utils/auth"
 
-console.log(import.meta.env)
 // create an axios instance
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API, // url = base url + request url

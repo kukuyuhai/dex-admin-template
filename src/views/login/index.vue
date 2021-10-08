@@ -35,20 +35,17 @@
 
 <script>
   import { defineComponent, getCurrentInstance, reactive, ref, toRefs, watch } from "vue"
-  import { useUserStore } from "@/stores"
-  import { useRoute, useRouter } from "vue-router"
+  import { useCore } from "@/core"
   export default defineComponent({
     name: "Login",
     setup() {
       const { ctx } = getCurrentInstance()
-      const userStore = useUserStore()
-      const router = useRouter()
-      const $route = useRoute()
+      const { route, router, store } = useCore()
       const redirect = ref("")
       const otherQuery = ref({})
 
       watch(
-        $route,
+        route,
         (route) => {
           const query = route.query
           if (query) {
@@ -92,7 +89,7 @@
         submitForm(formName) {
           ctx.$refs[formName].validate((valid) => {
             if (valid) {
-              userStore
+              store.user
                 .login(state.modelForm)
                 .then((result) => {
                   console.log(result)
@@ -126,10 +123,10 @@
     padding-top: 10%;
 
     .login-form {
-      width: 400px;
+      width: 480px;
       margin: 0px auto;
       background-color: #fff;
-      padding: 20px;
+      padding: 40px 60px;
       border-radius: 6px;
 
       h3 {

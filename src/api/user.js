@@ -1,4 +1,4 @@
-import request from "@core/utils/request"
+import request from "@core/axios/request"
 
 export function login(data) {
   return request({

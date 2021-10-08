@@ -1,6 +1,6 @@
 import Cookies from "js-cookie"
 
-const TokenKey = "dex_token"
+const TokenKey = import.meta.env.VITE_APP_TOKENKEY || "dex_token"
 
 export function getToken() {
   return Cookies.get(TokenKey)
