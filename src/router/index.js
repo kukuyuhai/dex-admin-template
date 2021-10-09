@@ -24,14 +24,13 @@ export const constantRoutes = [
     path: "/form",
     name: "form",
     component: Layout,
-    redirect: "/form/index",
-    meta: { icon: "el-icon-document-copy", title: "表单" },
+    redirect: "/form/create",
     children: [
       {
-        path: "index",
-        name: "index",
-        component: () => import("@/views/form/index.vue"),
-        meta: { icon: "error-404", title: "form" }
+        path: "create",
+        name: "create",
+        component: () => import("@/views/form/create.vue"),
+        meta: { icon: "el-icon-document-copy", title: "表单" }
       }
     ]
   },

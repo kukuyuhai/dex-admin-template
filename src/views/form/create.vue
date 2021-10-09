@@ -56,6 +56,7 @@
 
 <script lang="ts">
   export default {
+    name: "FormCreate",
     data() {
       return {
         form: {
