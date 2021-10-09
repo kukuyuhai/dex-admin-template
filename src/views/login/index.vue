@@ -39,7 +39,7 @@
   export default defineComponent({
     name: "Login",
     setup() {
-      const { ctx } = getCurrentInstance()
+      const vm = getCurrentInstance()
       const { route, router, store } = useCore()
       const redirect = ref("")
       const otherQuery = ref({})
@@ -87,7 +87,7 @@
 
       const funcList = {
         submitForm(formName) {
-          ctx.$refs[formName].validate((valid) => {
+          vm.refs[formName].validate((valid) => {
             if (valid) {
               store.user
                 .login(state.modelForm)

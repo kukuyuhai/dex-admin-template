@@ -27,6 +27,7 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   (response) => {
+    console.log(response)
     const res = response.data
     // 处理流数据返回
     if (res instanceof Blob) {

@@ -1,6 +1,6 @@
-const Mock = require("mockjs")
+import mockjs from "mockjs"
 
-const data = Mock.mock({
+const data = mockjs.mock({
   "items|30": [
     {
       id: "@id",
@@ -13,7 +13,7 @@ const data = Mock.mock({
   ]
 })
 
-module.exports = [
+export default [
   {
     url: "/vue-admin-template/table/list",
     type: "get",

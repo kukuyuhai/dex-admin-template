@@ -8,9 +8,10 @@ import WindiCSS from "vite-plugin-windicss"
 const { resolve } = require("path")
 
 // https://vitejs.dev/config/
-export default ({ command }) =>
-  defineConfig({
-    base: "/",
+export default ({ command }) => {
+  const isBuild = command === "build"
+  return defineConfig({
+    base: "./",
     plugins: [
       vue({
         refTransform: true
@@ -26,8 +27,14 @@ export default ({ command }) =>
       }),
       viteMockServe({
         // default
+        ignore: /^\_/,
         mockPath: "mock",
-        localEnabled: command === "serve"
+        localEnabled: !isBuild,
+        prodEnabled: isBuild,
+        injectCode: `
+          import { setupProdMockServer } from '../mock/_createProductionServer.js';
+          setupProdMockServer();
+        `
       }),
       WindiCSS()
     ],
@@ -64,14 +71,17 @@ export default ({ command }) =>
           main: resolve(__dirname, "index.html")
         }
       },
-      minify: "terser",
-      terserOptions: {
-        compress: {
-          // warnings: false,
-          drop_console: true, // console
-          drop_debugger: false,
-          pure_funcs: ["console.log"] // 移除console
-        }
-      }
+      sourcemap: "inline"
+      // minify: "terser",
+
+      // terserOptions: {
+      //   compress: {
+      //     // warnings: false,
+      //     drop_console: false, // console
+      //     drop_debugger: false,
+      //     pure_funcs: ["console.log"] // 移除console
+      //   }
+      // }
     }
   })
+}

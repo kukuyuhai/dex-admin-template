@@ -35,6 +35,7 @@ export const useUserStore = defineStore("user", {
     async getUserInfo() {
       try {
         const result = await getInfo(this.token)
+        console.log("result========>")
         const { roles } = result
         if (!roles || roles.length <= 0) {
           return "用户角色必须是数组"
