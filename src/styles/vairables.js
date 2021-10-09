@@ -7,5 +7,6 @@ export default {
   menuHover: "#357fed",
   subMenuBg: "#041b3e",
   subMenuHover: "#357fed",
-  sideBarWidth: "210px"
+  sideBarWidth: "210px",
+  themme: "357fed"
 }

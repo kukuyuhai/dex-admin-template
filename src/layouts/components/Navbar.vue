@@ -4,6 +4,15 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <div class="toolbar">
+        <el-icon
+          v-if="store.settings.showSettings"
+          class="toolbar-setting"
+          @click.stop="showRightPanel"
+        >
+          <setting />
+        </el-icon>
+      </div>
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar + '?imageView2/1/w/80/h/80'" class="user-avatar" />
@@ -36,7 +45,8 @@
   import Hamburger from "@/components/Hamburger/index.vue"
   import { defineComponent } from "vue"
   import { useAppStore, useUserStore } from "@/stores"
-  import { useRoute, useRouter } from "vue-router"
+  import { useCore } from "../../core"
+
   export default defineComponent({
     components: {
       Breadcrumb,
@@ -45,8 +55,7 @@
     setup() {
       const { sidebar, toggleSideBar } = useAppStore()
       const { avatar, name, logout } = useUserStore()
-      const $router = useRouter()
-      const $route = useRoute()
+      const { router, route, store } = useCore()
 
       function toggleClick() {
         toggleSideBar()
@@ -54,15 +63,24 @@
 
       async function useLogout() {
         await logout()
-        $router.push(`/login?redirect=${$route.fullPath}`)
+        router.push(`/login?redirect=${route.fullPath}`)
+      }
+
+      const showRightPanel = () => {
+        store.settings.changeSetting({
+          key: "rightPanelShow",
+          value: true
+        })
       }
 
       return {
         sidebar,
         avatar,
         name,
+        store,
         toggleClick,
-        useLogout
+        useLogout,
+        showRightPanel
       }
     }
   })
@@ -81,7 +99,7 @@
       height: 100%;
       float: left;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: all 0.3s;
       -webkit-tap-highlight-color: transparent;
 
       &:hover {
@@ -99,9 +117,18 @@
       line-height: 50px;
       cursor: pointer;
       user-select: none;
+      display: flex;
+      align-items: center;
 
       &:focus {
         outline: none;
+      }
+
+      .toolbar {
+        margin-right: 10px;
+        &-setting {
+          font-size: 20px;
+        }
       }
 
       .right-menu-item {

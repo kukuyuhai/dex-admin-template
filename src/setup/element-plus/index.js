@@ -1,6 +1,6 @@
 import ElementPlus from "element-plus"
-import { Apple } from "@element-plus/icons"
-const Icons = [Apple]
+import { Apple, Setting } from "@element-plus/icons"
+const Icons = [Apple, Setting]
 // element comp 全局引入注册,
 const setupElementPlus = (app) => {
   // Icon 按需导入

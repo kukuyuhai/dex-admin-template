@@ -1,6 +1,7 @@
 {
   "name": "dex-admin-template",
   "version": "0.0.1",
+  "packageManager": "pnpm@6.15.1",
   "scripts": {
     "docs": "npx docsify serve docs -p 3001 --open",
     "dev": "vite --host",
@@ -52,6 +53,7 @@
     "lint-staged": "^11.2.0",
     "mockjs": "^1.1.0",
     "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1",
     "rollup": "^2.58.0",
     "sass": "^1.42.1",
     "unplugin-element-plus": "^0.1.0",
@@ -62,11 +64,7 @@
     "vue-eslint-parser": "^7.11.0"
   },
   "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "prettier --ignore-path .eslintignore --write",
-      "eslint --cache --fix",
-      "git add"
-    ]
+    "src/**/*.{js,vue}": "eslint --fix"
   },
   "config": {
     "commitizen": {

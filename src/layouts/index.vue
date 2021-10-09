@@ -6,6 +6,9 @@
         <navbar />
       </div>
       <app-main />
+      <right-panel v-if="showSettings">
+        <settings />
+      </right-panel>
     </div>
   </div>
 </template>
@@ -16,13 +19,17 @@
   import AppMain from "./components/AppMain.vue"
   import { computed, defineComponent } from "vue"
   import { useAppStore, useSettingsStore } from "@/stores"
+  import RightPanel from "@/components/RightPanel/index.vue"
+  import Settings from "./components/Settings/index.vue"
 
   export default defineComponent({
     name: "Layout",
     components: {
       Navbar,
       Sidebar,
-      AppMain
+      AppMain,
+      RightPanel,
+      Settings
     },
     setup() {
       const appstore = useAppStore()
@@ -38,7 +45,8 @@
       return {
         fixedHeader: settings.fixedHeader,
         classObj,
-        sidebar: appstore.sidebar
+        sidebar: appstore.sidebar,
+        showSettings: settings.showSettings
       }
     }
   })
