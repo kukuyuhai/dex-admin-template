@@ -5,10 +5,10 @@
       <el-menu
         :default-active="activeMenu"
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
+        :background-color="sidebar.menuBg"
+        :text-color="sidebar.menuText"
         :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
+        :active-text-color="sidebar.menuActiveText"
         :collapse-transition="false"
         mode="vertical"
       >
@@ -26,7 +26,6 @@
 <script>
   import Logo from "./Logo.vue"
   import SidebarItem from "./SidebarItem.vue"
-  import variables from "@/styles/vairables.js"
   import { computed, defineComponent } from "vue"
   import { useAppStore } from "@/stores"
   import { useRoute } from "vue-router"
@@ -40,6 +39,7 @@
       const appstore = useAppStore()
       const $route = useRoute()
       const settings = useSettingsStore()
+      console.log(settings)
       const permissionStore = usePermissionStore()
       const isCollapse = computed(() => {
         return !appstore.sidebar.opened
@@ -48,6 +48,11 @@
       const showLogo = computed(() => {
         return settings.sidebarLogo
       })
+
+      const sidebar = computed(() => {
+        return settings.sidebar
+      })
+
       const activeMenu = computed(() => {
         const route = $route
         const { meta, path } = route
@@ -63,7 +68,7 @@
         activeMenu,
         isCollapse,
         permission_routes: permissionStore.routes,
-        variables
+        sidebar
       }
     }
   })

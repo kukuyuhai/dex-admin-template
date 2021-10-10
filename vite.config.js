@@ -3,7 +3,6 @@ import vueJsx from "@vitejs/plugin-vue-jsx"
 import { defineConfig } from "vite"
 import ElementPlus from "unplugin-element-plus/vite"
 import viteSvgIcons from "vite-plugin-svg-icons"
-import { viteMockServe } from "vite-plugin-mock"
 import WindiCSS from "vite-plugin-windicss"
 const { resolve } = require("path")
 
@@ -24,17 +23,6 @@ export default ({ command }) => {
         // 配置路劲在你的src里的svg存放文件
         iconDirs: [resolve(process.cwd(), "src/icons")],
         symbolId: "icon-[dir]-[name]"
-      }),
-      viteMockServe({
-        // default
-        ignore: /^\_/,
-        mockPath: "mock",
-        localEnabled: !isBuild,
-        prodEnabled: isBuild,
-        injectCode: `
-          import { setupProdMockServer } from '../mock/_createProductionServer.js';
-          setupProdMockServer();
-        `
       }),
       WindiCSS()
     ],
@@ -71,17 +59,16 @@ export default ({ command }) => {
           main: resolve(__dirname, "index.html")
         }
       },
-      sourcemap: "inline"
-      // minify: "terser",
-
-      // terserOptions: {
-      //   compress: {
-      //     // warnings: false,
-      //     drop_console: false, // console
-      //     drop_debugger: false,
-      //     pure_funcs: ["console.log"] // 移除console
-      //   }
-      // }
+      sourcemap: "false",
+      minify: "terser",
+      terserOptions: {
+        compress: {
+          // warnings: false,
+          drop_console: false, // console
+          drop_debugger: false,
+          pure_funcs: ["console.log"] // 移除console
+        }
+      }
     }
   })
 }

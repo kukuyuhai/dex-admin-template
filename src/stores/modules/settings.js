@@ -1,7 +1,6 @@
 import { defineStore } from "pinia"
 import defaultSettings from "@/settings"
-const { showSettings, fixedHeader, sidebarLogo } = defaultSettings
-import variables from "@/styles/vairables.js"
+const { showSettings, fixedHeader, sidebarLogo, sidebar, theme } = defaultSettings
 
 export const useSettingsStore = defineStore("settings", {
   state: () => {
@@ -10,7 +9,8 @@ export const useSettingsStore = defineStore("settings", {
       fixedHeader: fixedHeader,
       sidebarLogo: sidebarLogo,
       rightPanelShow: false,
-      theme: variables.theme,
+      theme: theme,
+      sidebar: sidebar,
       pageSwitchAnimation: true,
       tagsView: true
     }

@@ -11,6 +11,11 @@ import App from "./App.vue"
 import "./permission" // 注册路由权限
 const app = createApp(App)
 import "./styles/index.scss"
+import { mockXHR } from "../mock/mockXHR"
+
+if (import.meta.env.VITE_APP_USE_MOCK) {
+  mockXHR()
+}
 
 // 启动app
 bootstrap(app)
@@ -27,7 +32,7 @@ bootstrap(app)
     setupRouterMountedApp(app)
   })
   .catch(() => {
-    console.error("程序启动失败")
+    console.error("程序启动失败!!!")
   })
 // 配置全局属性
 

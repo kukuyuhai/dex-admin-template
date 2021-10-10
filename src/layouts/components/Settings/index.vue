@@ -35,10 +35,13 @@
 <script>
   import { computed } from "vue"
   import { useSettingsStore } from "../../../stores"
-  // import ThemePicker from "@/components/ThemePicker"
+  import ThemePicker from "@/components/ThemePicker/index.vue"
 
   export default {
-    components: {},
+    name: "Settings",
+    components: {
+      ThemePicker
+    },
     setup() {
       const store = useSettingsStore()
       const fixedHeader = computed({

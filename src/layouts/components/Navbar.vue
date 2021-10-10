@@ -4,6 +4,9 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <UseDark v-slot="{ isDark, toggleDark }" storage-key="theme">
+        <button @click="toggleDark()"> Is Dark: {{ isDark }} </button>
+      </UseDark>
       <div class="toolbar">
         <el-icon
           v-if="store.settings.showSettings"
@@ -46,11 +49,13 @@
   import { defineComponent } from "vue"
   import { useAppStore, useUserStore } from "@/stores"
   import { useCore } from "../../core"
+  import UseDark from "./Settings/UseDark"
 
   export default defineComponent({
     components: {
       Breadcrumb,
-      Hamburger
+      Hamburger,
+      UseDark
     },
     setup() {
       const { sidebar, toggleSideBar } = useAppStore()

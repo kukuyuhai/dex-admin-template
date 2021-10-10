@@ -42,3 +42,7 @@ pnmp run build:stage
 ```
 pnpm run build
 ```
+
+### 点赞
+
+如果该项目对你有帮助，请帮我点个小星星。
