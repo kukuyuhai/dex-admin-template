@@ -7,7 +7,11 @@ const setupElementPlus = (app) => {
   Icons.forEach((icon) => {
     app.component(icon.name, icon)
   })
-  app.use(ElementPlus)
+  //'large' | 'medium' | 'small' | 'mini'
+  app.use(ElementPlus, {
+    size: "medium",
+    zIndex: 3000
+  }) // set default size
 }
 
 export { setupElementPlus }

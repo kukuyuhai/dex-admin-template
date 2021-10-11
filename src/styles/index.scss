@@ -62,6 +62,11 @@ body {
   height: 100%;
 }
 
+/*reset widicss*/
+button:focus {
+  outline: none;
+}
+
 svg,
 img {
   display: inline-block;

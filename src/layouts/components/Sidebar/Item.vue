@@ -12,9 +12,10 @@
         default: ""
       }
     },
-    render(context) {
-      const { icon, title } = context
-      let vnodes = []
+    render(props) {
+      const { icon, title } = props
+      const vnodes = []
+
       if (icon) {
         if (icon.includes("el-icon")) {
           vnodes.push(<i class={[icon, "sub-el-icon"]} />)
@@ -23,12 +24,10 @@
         }
       }
 
-      return (
-        <>
-          <>{vnodes}</>
-          <span>{title}</span>
-        </>
-      )
+      if (title) {
+        vnodes.push(<span>{title}</span>)
+      }
+      return vnodes
     }
   }
 </script>
