@@ -8,4 +8,4 @@ async function bootstrap(app) {
 
 export { bootstrap }
 // 导出所有hook
-export * from "./hooks"
+export * from "./composables"

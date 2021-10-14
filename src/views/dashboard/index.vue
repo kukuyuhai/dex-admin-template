@@ -9,7 +9,7 @@
 </template>
 <script>
   import { defineComponent } from "vue"
-  import { useCore } from "@/core/hooks"
+  import { useCore } from "@/core/composables"
 
   export default defineComponent({
     setup() {
