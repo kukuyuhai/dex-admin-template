@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import defaultSettings from "@/settings"
-const { showSettings, fixedHeader, sidebarLogo, sidebar, theme } = defaultSettings
+const { showSettings, fixedHeader, sidebarLogo, sidebar, theme, tagsView } = defaultSettings
 
 export const useSettingsStore = defineStore("settings", {
   state: () => {
@@ -12,7 +12,7 @@ export const useSettingsStore = defineStore("settings", {
       theme: theme,
       sidebar: sidebar,
       pageSwitchAnimation: true,
-      tagsView: true
+      tagsView: tagsView
     }
   },
   actions: {

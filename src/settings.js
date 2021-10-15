@@ -18,13 +18,19 @@ export default {
 
   /**
    * @type {boolean} true | false
+   * @description Whether need tagsView
+   */
+  tagsView: true,
+
+  /**
+   * @type {boolean} true | false
    * @description Whether fix the header
    */
   fixedHeader: true,
+
   /**
-   *
-   *
-   *
+   * @type {Object} colors
+   * @description Set the sidebar style
    */
   sidebar: {
     menuText: "white",
@@ -36,9 +42,10 @@ export default {
     subMenuHover: "#357fed",
     sideBarWidth: "210px"
   },
+
   /**
-   *
-   *
+   * @type {string} hex | hsl | rgb
+   * @description Set the default theme
    */
   theme: "#357fed"
 }

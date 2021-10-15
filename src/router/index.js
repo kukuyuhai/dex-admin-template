@@ -1,7 +1,8 @@
 import login from "@/views/login/index.vue"
 import { createRouter, createWebHashHistory } from "vue-router"
 import Layout from "@/layouts/index.vue"
-
+import menuRouter from "./modules/menu"
+import formRouter from "./modules/form"
 /**
  * 没有权限要求的基本页面
  * 所有角色都可以被访问
@@ -17,41 +18,6 @@ export const constantRoutes = [
         name: "dashboard",
         component: () => import("@/views/dashboard/index.vue"),
         meta: { title: "仪表盘", icon: "dashboard" }
-      }
-    ]
-  },
-  {
-    path: "/form",
-    name: "form",
-    component: Layout,
-    redirect: "/form/create",
-    children: [
-      {
-        path: "create",
-        name: "create",
-        component: () => import("@/views/form/create.vue"),
-        meta: { icon: "el-icon-document-copy", title: "表单" }
-      }
-    ]
-  },
-  {
-    path: "/menu",
-    name: "menu",
-    component: Layout,
-    redirect: "/menu/table",
-    meta: { title: "Table", icon: "el-icon-menu" },
-    children: [
-      {
-        path: "table",
-        name: "menu-table",
-        component: () => import("@/views/menu/table.vue"),
-        meta: { title: "表格", icon: "el-icon-s-grid" }
-      },
-      {
-        path: "chart",
-        name: "menu-chart",
-        component: () => import("@/views/menu/chart.vue"),
-        meta: { title: "图表", icon: "el-icon-pie-chart" }
       }
     ]
   },
@@ -75,7 +41,7 @@ export const constantRoutes = [
  * 需要根据用户角色动态加载的路由
  */
 
-export const asyncRoutes = []
+export const asyncRoutes = [formRouter, menuRouter]
 
 /**
  * 创建路由实例

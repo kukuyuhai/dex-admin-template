@@ -1,9 +1,10 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     <sidebar class="sidebar-container" />
-    <div class="main-container">
+    <div :class="{ hasTagsView: needTagsView }" class="main-container">
       <div :class="{ 'fixed-header': fixedHeader }">
         <navbar />
+        <tags-view v-if="needTagsView"></tags-view>
       </div>
       <app-main />
       <right-panel v-if="showSettings">
@@ -21,6 +22,7 @@
   import { useAppStore, useSettingsStore } from "@/stores"
   import RightPanel from "@/components/RightPanel/index.vue"
   import Settings from "./components/Settings/index.vue"
+  import TagsView from "./components/TagsView/index.vue"
 
   export default defineComponent({
     name: "Layout",
@@ -29,7 +31,8 @@
       Sidebar,
       AppMain,
       RightPanel,
-      Settings
+      Settings,
+      TagsView
     },
     setup() {
       const appstore = useAppStore()
@@ -46,6 +49,7 @@
         fixedHeader: settings.fixedHeader,
         classObj,
         sidebar: appstore.sidebar,
+        needTagsView: settings.tagsView,
         showSettings: settings.showSettings
       }
     }

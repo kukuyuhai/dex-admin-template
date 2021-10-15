@@ -4,6 +4,7 @@ import { usePermissionStore } from "./modules/permission"
 import { useAppStore } from "./modules/app"
 import { useUserStore } from "./modules/user"
 import { useSettingsStore } from "./modules/settings"
+import { useTagsViewStore } from "./modules/tagsView"
 // 挂载pinia
 export function setupStore(app) {
   app.use(pinia)
@@ -18,12 +19,14 @@ export function useStore() {
   const app = useAppStore()
   const user = useUserStore()
   const settings = useSettingsStore()
+  const tagsView = useTagsViewStore()
 
   return {
     permission,
     app,
     user,
-    settings
+    settings,
+    tagsView
   }
 }
 

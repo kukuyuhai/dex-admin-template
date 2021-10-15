@@ -25,9 +25,8 @@
           style="width: 100%; margin-top: 20px"
           type="primary"
           @click="submitForm('ruleForm')"
+          >登 录</el-button
         >
-          登 录
-        </el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -117,7 +116,7 @@
 
 <style lang="scss" scoped>
   .form {
-    background: cadetblue;
+    background: $tiffany;
     height: 100%;
     box-sizing: border-box;
     padding-top: 10%;
