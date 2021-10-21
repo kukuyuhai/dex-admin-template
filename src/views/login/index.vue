@@ -35,20 +35,21 @@
 <script>
   import { defineComponent, getCurrentInstance, reactive, ref, toRefs, watch } from "vue"
   import { useCore } from "@/core"
+  import { useUserStore } from "../../stores"
   export default defineComponent({
     name: "Login",
     setup() {
       const vm = getCurrentInstance()
-      const { route, router, store } = useCore()
+      const { route, router } = useCore()
+      const userStore = useUserStore()
       const redirect = ref("")
       const otherQuery = ref({})
 
       watch(
-        route,
-        (route) => {
-          const query = route.query
-          if (query) {
-            redirect.value = query.redirect
+        () => route.query.redirect,
+        (v) => {
+          if (v) {
+            redirect.value = v
             otherQuery.value = getOtherQuery()
           }
         },
@@ -88,7 +89,7 @@
         submitForm(formName) {
           vm.refs[formName].validate((valid) => {
             if (valid) {
-              store.user
+              userStore
                 .login(state.modelForm)
                 .then((result) => {
                   console.log(result)

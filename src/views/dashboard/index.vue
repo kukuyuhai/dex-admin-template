@@ -9,16 +9,13 @@
 </template>
 <script>
   import { defineComponent } from "vue"
-  import { useCore } from "@/core/composables"
+  import { useUserStore } from "../../stores"
 
   export default defineComponent({
     setup() {
-      const { store } = useCore()
-      // const mitt = inject("mitt")
-      // console.log(route, router, store.user.name, mitt)
-
+      const user = useUserStore()
       return {
-        name: store.user.name
+        name: user.name
       }
     }
   })

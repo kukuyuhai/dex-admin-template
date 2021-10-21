@@ -1,7 +1,7 @@
 import { useRoute } from "vue-router"
 import { onMounted, watch, ref, computed } from "vue"
-import { useTagsViewStore } from "../../stores/modules/tagsView"
-import { usePermissionStore } from "../../stores"
+import { useTagsViewStore } from "@/stores/modules/tagsView"
+import { usePermissionStore } from "@/stores"
 import path from "path-browserify"
 
 export function useTagRoute() {
@@ -34,7 +34,7 @@ export function useTagRoute() {
   }
 
   /**
-   *
+   * 添加tag
    * @returns
    */
   function addTags() {
@@ -51,7 +51,7 @@ export function useTagRoute() {
   function moveToCurrentTag() {}
 
   /**
-   *
+   * 初始化Tags
    */
   function initTags() {
     affixTags.value = _filterAffixTags(routes.value)
@@ -64,7 +64,10 @@ export function useTagRoute() {
   }
 
   /**
-   *
+   * 过滤RouteLocation中meta固定的tagview
+   * @param {*} routes 路由数
+   * @param {*} basePath 跟路由路径
+   * @returns tag集合
    */
   function _filterAffixTags(routes, basePath = "/") {
     let tags = []

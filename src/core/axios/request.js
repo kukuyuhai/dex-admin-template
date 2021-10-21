@@ -1,7 +1,9 @@
 import axios from "axios"
 import { ElMessage } from "element-plus"
-import { useUserStore, pinia } from "@/stores/"
+import { pinia } from "@/stores/"
+
 import { getToken } from "@core/utils/auth"
+import { useUserStore } from "@/stores/modules/user"
 
 // create an axios instance
 const service = axios.create({

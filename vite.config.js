@@ -16,9 +16,7 @@ export default ({ command }) => {
         refTransform: true
       }),
       vueJsx(),
-      ElementPlus({
-        useSource: true
-      }),
+      ElementPlus(),
       viteSvgIcons({
         // 配置路劲在你的src里的svg存放文件
         iconDirs: [resolve(process.cwd(), "src/icons")],
@@ -60,15 +58,15 @@ export default ({ command }) => {
         }
       },
       sourcemap: "false",
-      minify: "terser",
-      terserOptions: {
-        compress: {
-          // warnings: false,
-          drop_console: false, // console
-          drop_debugger: false,
-          pure_funcs: ["console.log"] // 移除console
-        }
-      }
+      minify: "terser"
+      // terserOptions: {
+      //   compress: {
+      //     // warnings: false,
+      //     drop_console: false, // console
+      //     drop_debugger: false,
+      //     pure_funcs: ["console.log"] // 移除console
+      //   }
+      // }
     }
   })
 }

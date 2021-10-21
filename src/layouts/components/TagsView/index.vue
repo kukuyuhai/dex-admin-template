@@ -21,24 +21,26 @@
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{ left: left + 'px', top: top + 'px' }" class="contextmenu">
-      <li @click="refreshSelectedTag(selectedTag)">Refresh</li>
-      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">Close</li>
-      <li @click="closeOthersTags">Close Others</li>
-      <li @click="closeAllTags(selectedTag)">Close All</li>
+      <li @click="refreshSelectedTag(selectedTag)">刷新</li>
+      <li v-if="!isAffix(selectedTag)" @click="closeSelectedTag(selectedTag)">关闭</li>
+      <li @click="closeOthersTags">关闭其他</li>
+      <li @click="closeAllTags(selectedTag)">关闭所有</li>
     </ul>
   </div>
 </template>
 
 <script>
   import ScrollPane from "./ScrollPane.vue"
-  import { useTagsViewLayout } from "../../composables/useTagsViewLayout"
-  import { useTagRoute } from "../../composables/useTagRoute"
+  import { useTagsViewLayout } from "@core/composables/tagsView/layout"
+  import { useTagRoute } from "@/core/composables/tagsView/route"
+  import { useTagsViewTools } from "@/core/composables/tagsView/tools"
 
   export default {
     components: { ScrollPane },
     setup() {
       const { visible, tagEl, top, left, openMenu, handleScroll } = useTagsViewLayout()
       const { visitedViews, isActive, isAffix } = useTagRoute()
+      const { refreshSelectedTag } = useTagsViewTools()
 
       return {
         visible,
@@ -50,7 +52,8 @@
         isActive,
         isAffix,
         openMenu,
-        handleScroll
+        handleScroll,
+        refreshSelectedTag
       }
     }
   }

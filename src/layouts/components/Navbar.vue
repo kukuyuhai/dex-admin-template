@@ -8,11 +8,7 @@
         <button @click="toggleDark()"> Is Dark: {{ isDark }} </button>
       </UseDark>
       <div class="toolbar">
-        <el-icon
-          v-if="store.settings.showSettings"
-          class="toolbar-setting"
-          @click.stop="showRightPanel"
-        >
+        <el-icon v-if="settings.showSettings" class="toolbar-setting" @click.stop="showRightPanel">
           <setting />
         </el-icon>
       </div>
@@ -50,6 +46,7 @@
   import { useAppStore, useUserStore } from "@/stores"
   import { useCore } from "../../core"
   import UseDark from "./Settings/UseDark"
+  import { useSettingsStore } from "../../stores"
 
   export default defineComponent({
     components: {
@@ -60,7 +57,8 @@
     setup() {
       const { sidebar, toggleSideBar } = useAppStore()
       const { avatar, name, logout } = useUserStore()
-      const { router, route, store } = useCore()
+      const { router, route } = useCore()
+      const settings = useSettingsStore()
 
       function toggleClick() {
         toggleSideBar()
@@ -72,7 +70,7 @@
       }
 
       const showRightPanel = () => {
-        store.settings.changeSetting({
+        settings.changeSetting({
           key: "rightPanelShow",
           value: true
         })
@@ -82,7 +80,7 @@
         sidebar,
         avatar,
         name,
-        store,
+        settings,
         toggleClick,
         useLogout,
         showRightPanel
