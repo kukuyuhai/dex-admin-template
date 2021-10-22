@@ -1,0 +1,1 @@
+{"version":3,"file":"chart.bd00eb91.js","sources":["../../src/views/menu/chart.vue"],"sourcesContent":["<template>\n  <span>chart</span>\n</template>\n\n<script>\n  export default {\n    name: \"Chart\"\n  }\n</script>\n"],"names":["name","$options"],"mappings":"gGAMIA,KAAM,uCALFC"}
