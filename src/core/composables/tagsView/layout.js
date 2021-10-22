@@ -1,14 +1,14 @@
 import { ref, watch, reactive, toRefs, getCurrentInstance } from "vue"
+import { useTagRoute } from "./route"
 
 export function useTagsViewLayout() {
   const visible = ref()
-  const tagEl = ref(null)
   const instance = getCurrentInstance()
+  const { selectedTag } = useTagRoute()
   const menu = reactive({
     top: 0,
     left: 0
   })
-  const selectedTag = ref("")
 
   const closeMenu = () => {
     visible.value = false
@@ -53,7 +53,6 @@ export function useTagsViewLayout() {
 
   return {
     visible,
-    tagEl,
     ...toRefs(menu),
     closeMenu,
     openMenu,

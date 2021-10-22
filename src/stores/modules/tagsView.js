@@ -33,6 +33,32 @@ export const useTagsViewStore = defineStore("tagsView", {
         this.cachedViews.push(view.name)
       }
     },
+    async delOthersViews(view) {
+      this.visitedViews = this.visitedViews.filter((v) => {
+        return v.meta.affix || v.path === view.path
+      })
+      const index = this.cachedViews.indexOf(view.name)
+      if (index > -1) {
+        this.cachedViews = this.cachedViews.slice(index, index + 1)
+      } else {
+        // if index = -1, there is no cached tags
+        this.cachedViews = []
+      }
+
+      return {
+        visitedViews: [...this.visitedViews],
+        cachedViews: [...this.cachedViews]
+      }
+    },
+    async delAllViews() {
+      const affixTags = this.visitedViews.filter((tag) => tag.meta.affix)
+      this.visitedViews = affixTags
+      this.cachedViews = []
+      return {
+        visitedViews: [...this.visitedViews],
+        cachedViews: [...this.cachedViews]
+      }
+    },
     delVisitedView(view) {
       for (const [i, v] of this.visitedViews.entries()) {
         if (v.path === view.path) {

@@ -1,4 +1,3 @@
-import login from "@/views/login/index.vue"
 import { createRouter, createWebHashHistory } from "vue-router"
 import Layout from "@/layouts/index.vue"
 import menuRouter from "./modules/menu"
@@ -8,6 +7,28 @@ import formRouter from "./modules/form"
  * 所有角色都可以被访问
  */
 export const constantRoutes = [
+  {
+    path: "/redirect",
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: "/redirect/:path(.*)",
+        component: () => import("@/views/redirect/index.vue")
+      }
+    ]
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("@/views/login/index.vue"),
+    hidden: true
+  },
+  {
+    path: "/auth-redirect",
+    component: () => import("@/views/login/auth-redirect.vue"),
+    hidden: true
+  },
   {
     path: "/",
     component: Layout,
@@ -22,19 +43,10 @@ export const constantRoutes = [
     ]
   },
   {
-    path: "/login",
-    name: "login",
-    component: login,
-    hidden: true,
-    meta: { title: "登录" }
-  },
-
-  {
-    path: "/404",
+    path: "/:pathMatch(.*)",
     component: () => import("@/views/error-pages/404.vue"),
     hidden: true
-  },
-  { path: "/:catchAll(.*)", redirect: "/404", hidden: true }
+  }
 ]
 
 /**

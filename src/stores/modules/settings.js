@@ -17,7 +17,6 @@ export const useSettingsStore = defineStore("settings", {
   },
   actions: {
     changeSetting({ key, value }) {
-      console.log(key, value)
       this.$state[key] = value
     }
   }

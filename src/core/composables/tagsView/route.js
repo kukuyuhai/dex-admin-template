@@ -1,13 +1,17 @@
 import { useRoute } from "vue-router"
-import { onMounted, watch, ref, computed } from "vue"
+import { onMounted, watch, ref, computed, nextTick } from "vue"
 import { useTagsViewStore } from "@/stores/modules/tagsView"
 import { usePermissionStore } from "@/stores"
+import { useTemplateRefsList } from "@vueuse/core"
+
 import path from "path-browserify"
 
 export function useTagRoute() {
   const $route = useRoute()
   const tagsViewStore = useTagsViewStore()
   const permission = usePermissionStore()
+  const tagsRefList = useTemplateRefsList()
+  const selectedTag = ref("")
   const routes = computed(() => {
     return permission.routes
   })
@@ -46,9 +50,24 @@ export function useTagRoute() {
   }
 
   /**
-   *
+   * 移动到当前路由，并更新访问路由
    */
-  function moveToCurrentTag() {}
+  function moveToCurrentTag() {
+    const tags = tagsRefList.value
+    console.log(tags)
+    nextTick(() => {
+      for (const tag of tags) {
+        if (tag.to.path === $route.path) {
+          // instance.refs.scrollPane.moveToTarget(tag)
+          // when query is different then update
+          if (tag.to.fullPath !== $route.fullPath) {
+            tagsViewStore.updateVisitedView($route)
+          }
+          break
+        }
+      }
+    })
+  }
 
   /**
    * 初始化Tags
@@ -103,11 +122,14 @@ export function useTagRoute() {
   })
 
   return {
+    tagsRefList,
     affixTags,
+    selectedTag,
     visitedViews,
     isActive,
     isAffix,
     initTags,
-    addTags
+    addTags,
+    moveToCurrentTag
   }
 }

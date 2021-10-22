@@ -1,13 +1,15 @@
 import { useTagsViewStore } from "@/stores/modules/tagsView"
 import { nextTick } from "vue"
 import { useRouter } from "vue-router"
+import { useTagRoute } from "./route"
 
 export function useTagsViewTools() {
   const tagsViewStore = useTagsViewStore()
   const $router = useRouter()
+  const { affixTags, isActive, selectedTag, moveToCurrentTag } = useTagRoute()
 
   /**
-   *
+   * 刷新选中的标签
    * @param {*} view
    */
   const refreshSelectedTag = (view) => {
@@ -21,81 +23,51 @@ export function useTagsViewTools() {
     })
   }
 
-  return {
-    refreshSelectedTag
+  const closeSelectedTag = (view) => {
+    tagsViewStore.delView(view).then(({ visitedViews }) => {
+      console.log(visitedViews)
+      if (isActive(view)) {
+        _toLastView(visitedViews, view)
+      }
+    })
   }
-  //   const tagsView = useTagsViewStore()
 
-  //   function moveToCurrentTag() {
-  //     const tags = $refs.tag
-  //     $nextTick(() => {
-  //       for (const tag of tags) {
-  //         if (tag.to.path === $route.path) {
-  //           $refs.scrollPane.moveToTarget(tag)
-  //           // when query is different then update
-  //           if (tag.to.fullPath !== $route.fullPath) {
-  //             tagsView.updateVisitedView($route)
-  //           }
-  //           break
-  //         }
-  //       }
-  //     })
-  //   }
+  const closeOthersTags = () => {
+    $router.push(selectedTag.value)
+    tagsViewStore.delOthersViews(selectedTag.value).then(() => {
+      moveToCurrentTag()
+    })
+  }
 
-  //   function refreshSelectedTag(view) {
-  //     tagsView.delCachedView(view).then(() => {
-  //       const { fullPath } = view
-  //       $nextTick(() => {
-  //         $router.replace({
-  //           path: "/redirect" + fullPath
-  //         })
-  //       })
-  //     })
-  //   }
+  const closeAllTags = (view) => {
+    tagsViewStore.delAllViews().then(({ visitedViews }) => {
+      if (affixTags.value.some((tag) => tag.path === view.path)) {
+        return
+      }
+      _toLastView(visitedViews, view)
+    })
+  }
 
-  //   function closeSelectedTag(view) {
-  //     tagsView.delView(view).then(({ visitedViews }) => {
-  //       if (isActive(view)) {
-  //         toLastView(visitedViews, view)
-  //       }
-  //     })
-  //   }
-  //   function closeOthersTags() {
-  //     $router.push(selectedTag)
-  //     tagsView.delOthersViews(selectedTag).then(() => {
-  //       moveToCurrentTag()
-  //     })
-  //   }
+  function _toLastView(visitedViews, view) {
+    const latestView = visitedViews.slice(-1)[0]
+    if (latestView) {
+      $router.push(latestView.fullPath)
+    } else {
+      // now the default is to redirect to the home page if there is no tags-view,
+      // you can adjust it according to your needs.
+      if (view.name === "Dashboard") {
+        // to reload home page
+        $router.replace({ path: "/redirect" + view.fullPath })
+      } else {
+        $router.push("/")
+      }
+    }
+  }
 
-  //   function closeAllTags(view) {
-  //     tagsView.delAllViews().then(({ visitedViews }) => {
-  //       if (affixTags.some((tag) => tag.path === view.path)) {
-  //         return
-  //       }
-  //       toLastView(visitedViews, view)
-  //     })
-  //   }
-
-  //   function toLastView(visitedViews, view) {
-  //     const latestView = visitedViews.slice(-1)[0]
-  //     if (latestView) {
-  //       $router.push(latestView.fullPath)
-  //     } else {
-  //       // now the default is to redirect to the home page if there is no tags-view,
-  //       // you can adjust it according to your needs.
-  //       if (view.name === "Dashboard") {
-  //         // to reload home page
-  //         $router.replace({ path: "/redirect" + view.fullPath })
-  //       } else {
-  //         $router.push("/")
-  //       }
-  //     }
-  //   }
-  //   return {
-  //     closeSelectedTag,
-  //     closeOthersTags,
-  //     refreshSelectedTag,
-  //     moveToCurrentTag,
-  //     closeAllTags
-  //   }
+  return {
+    refreshSelectedTag,
+    closeSelectedTag,
+    closeOthersTags,
+    closeAllTags
+  }
 }

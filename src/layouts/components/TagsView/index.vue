@@ -3,7 +3,7 @@
     <scroll-pane ref="scrollPane" class="tags-view-wrapper" @scroll="handleScroll">
       <router-link
         v-for="tag in visitedViews"
-        ref="tagEl"
+        :ref="tagsRefList.set"
         :key="tag.path"
         :class="isActive(tag) ? 'active' : ''"
         :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
@@ -38,22 +38,26 @@
   export default {
     components: { ScrollPane },
     setup() {
-      const { visible, tagEl, top, left, openMenu, handleScroll } = useTagsViewLayout()
-      const { visitedViews, isActive, isAffix } = useTagRoute()
-      const { refreshSelectedTag } = useTagsViewTools()
+      const { visible, top, left, openMenu, handleScroll } = useTagsViewLayout()
+      const { tagsRefList, selectedTag, visitedViews, isActive, isAffix } = useTagRoute()
+      const { refreshSelectedTag, closeSelectedTag, closeAllTags, closeOthersTags } =
+        useTagsViewTools()
 
       return {
+        tagsRefList,
         visible,
-        tagEl,
         top,
         left,
-        selectedTag: {},
+        selectedTag,
         visitedViews,
         isActive,
         isAffix,
         openMenu,
         handleScroll,
-        refreshSelectedTag
+        refreshSelectedTag,
+        closeSelectedTag,
+        closeAllTags,
+        closeOthersTags
       }
     }
   }
