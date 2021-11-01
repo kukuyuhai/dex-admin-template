@@ -4,6 +4,8 @@ async function bootstrap(app) {
 
   app.provide("mitt", mitt())
   app.config.globalProperties.$mitt = mitt()
+
+  return app
 }
 
 export { bootstrap }

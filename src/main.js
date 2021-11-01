@@ -19,7 +19,7 @@ if (import.meta.env.VITE_APP_USE_MOCK) {
 
 // 启动app
 bootstrap(app)
-  .then(() => {
+  .then((app) => {
     // 装载Echarts
     setupEcharts(app)
     // 装载element-plus
